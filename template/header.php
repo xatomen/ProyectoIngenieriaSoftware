@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
 
-    <link rel="stylesheet" href="main.css">
+    <!-- <script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script> -->
+    <script type="text/javascript" src="./src/main.js"></script>
+    <!-- <script type="text/javascript" src="./src/bulma-collapsible.min.js"></script> -->
+    <link rel="stylesheet" href="./src/main.css">
+    <link rel="stylesheet" href="./src/bulma-collapsible.min.css">
+    <link rel="stylesheet" href="./src/bulma-carousel.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
 
 </head>

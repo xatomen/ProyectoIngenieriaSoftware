@@ -4,7 +4,54 @@
     <h1 class="title">Preguntas frecuentes</h1>
     <p1>hola Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo id iure, quam fuga illum iusto optio neque deserunt tempora distinctio eum corrupti? Ratione fugiat maxime atque harum aliquam unde! Et. hola</p1>
 
-    
+    <div id="accordion_second">
+	<article class="message">
+		<div class="message-header has-background-danger">
+			<p>Question 1 <a href="#collapsible-message-accordion-second-1" data-action="collapse">Collapse/Expand</a></p>
+		</div>
+		<div id="collapsible-message-accordion-second-1" class="message-body is-collapsible" data-parent="accordion_second" data-allow-multiple="true">
+			<div class="message-body-content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+				placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+				<a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+				sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+				sem eget, facilisis sodales sem.
+			</div>
+		</div>
+	</article>
+	<article class="message">
+		<div class="message-header has-background-danger">
+			<p>Question 2 <a href="#collapsible-message-accordion-second-2" data-action="collapse">Collapse/Expand</a></p>
+		</div>
+		<div id="collapsible-message-accordion-second-2" class="message-body is-collapsible" data-parent="accordion_second" data-allow-multiple="true">
+			<div class="message-body-content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+				placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+				<a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+				sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+				sem eget, facilisis sodales sem.
+			</div>
+		</div>
+	</article>
+	<article class="message">
+		<div class="message-header has-background-danger">
+			<p>Question 3 <a href="#collapsible-message-accordion-second-3" data-action="collapse">Collapse/Expand</a></p>
+		</div>
+		<div id="collapsible-message-accordion-second-3" class="message-body is-collapsible" data-parent="accordion_second" data-allow-multiple="true">
+			<div class="message-body-content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+				placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+				<a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+				sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+				sem eget, facilisis sodales sem.
+			</div>
+		</div>
+	</article>
+</div>
+<script src="./src/bulma-collapsible.min.js"></script>
+<script>
+    const bulmaCollapsibleElement = bulmaCollapsible.attach('.is-collapsible')
+</script>
 
 
 </div>
