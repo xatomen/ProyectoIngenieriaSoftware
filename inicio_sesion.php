@@ -44,39 +44,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
 </head>
 <body>
-    
-    <div class="container">
-        <div class="columns m-6">
-            <form method="post" class="box column is-4 is-offset-4" >
-                <h1 class="title has-text-centered">Bienvenido!</h1>
-                <div class="container has-text-centered">
-                    <p1 class="">Ingrese sus credenciales para iniciar sesión en el sistema</p1>
-                </div>
-                
-                <div class="field">
-                    <label class="label">Usuario</label>
-                    <div class="control">
-                    <input class="input" type="text" placeholder="Usuario" name="usuario">
-                    </div>
-                </div>
+    <div class="container mt-5 mb-5">
 
-                <div class="field">
-                    <label class="label">Contraseña</label>
-                    <div class="control">
-                        <input class="input" type="password" placeholder="Contraseña" name="contrasenia">
-                    </div>
-                </div>
-                <div class="column is-centered is-offset-4">
-                    <button class="button is-primary">Inciar sesión</button>
-                </div>
-                
-            </form>
+        <div class="row">
+            
+            <div class="col"></div>
+
+            <div class="col">
+                <div class="card p-2 shadow p-3">
+                    <form method="post">
+                        <div class="container text-center">
+                            <h1>Bienvenido!</h1>
+                            <p1>Ingrese sus credenciales para iniciar sesión</p1>
+                            <hr>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                            <input name="usuario" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                        </div>
+                        
+                    </form>
+                </div>     
+            </div>
+            <div class="col"></div>
         </div>
-        
     </div>
 
 </body>
