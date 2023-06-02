@@ -7,7 +7,7 @@
     <div id="accordion_second">
 	<article class="message">
 		<div class="message-header has-background-danger">
-			<p>Question 1 <a href="#collapsible-message-accordion-second-1" data-action="collapse">Collapse/Expand</a></p>
+			<p><a href="#collapsible-message-accordion-second-1" data-action="collapse">Question 1 <i class="fa fa-angle-double-down"></i></a></p>
 		</div>
 		<div id="collapsible-message-accordion-second-1" class="message-body is-collapsible" data-parent="accordion_second" data-allow-multiple="true">
 			<div class="message-body-content">
