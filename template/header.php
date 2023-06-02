@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="main.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
 
 </head>
 <body>
@@ -14,7 +15,8 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="index.php">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <h1 class="title">INDIVIDUALES BETHEL</h1>
+      <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -45,3 +47,6 @@
     </div>
 
 </nav>
+
+<div class="columns">
+    <div class="column is-10 is-offset-1">
