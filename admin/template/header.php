@@ -24,19 +24,19 @@
                         Inicio
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="menu_carrusel.php" class="nav-link text-white">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="menu_carrusel.php"></use></svg>
                         Menú carrusel
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="menu_preguntas_frecuentes.php" class="nav-link text-white">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="menu_preguntas_frecuentes.php"></use></svg>
                         Menú preguntas frecuentes
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="menu_productos.php" class="nav-link text-white">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="menu_productos.php"></use></svg>
                         Menú productos
@@ -46,7 +46,7 @@
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="inicio_admin.php" class="nav-link active" aria-current="page">
+                        <a href="../index.php" class="nav-link text-white bg-danger">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="inicio_admin.php"></use></svg>
                         Salir
                         </a>
@@ -54,15 +54,6 @@
                 </ul>
             </div>
         </div>
-        <script>
-            /* global bootstrap: false */
-            (() => {
-            'use strict'
-            const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            tooltipTriggerList.forEach(tooltipTriggerEl => {
-                new bootstrap.Tooltip(tooltipTriggerEl)
-            })
-            })()
-        </script>
+        <script src="../../src/sidebars.js"></script>
         <div class="col">
             <div class="card m-1 p-3">
