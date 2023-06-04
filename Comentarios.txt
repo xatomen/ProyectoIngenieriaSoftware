@@ -1,0 +1,24 @@
+
+Programas:
+    - XAMPP
+
+Lenguajes:
+    - PHP
+    - HTML5
+    - CSS
+    - Javascript
+
+Frameworks:
+    - Bootstrap 5 (CSS)
+
+Lista para completar:
+    - Mostrar productos
+    - Ver si agregar "subpáginas" por cada producto
+    - Si se hace lo anterior, agregar carruseles a cada subpágina
+    - Ver si agregar página de inicio modificable a través de Sistema
+    - Ver si agregar quienes somos modificable a través de Sistema
+    - Ver si agregar funcionalidad de elegir si agregamos párrafo, subtítulo, listado, etc, para dejarlo más "bonito"
+    - Terminar footer
+    - Elegir background de página y Sistema
+    - Verificar funcionalidad login
+    - Agregar reCaptcha para mayor seguridad
