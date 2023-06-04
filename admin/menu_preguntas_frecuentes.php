@@ -115,14 +115,14 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="txtTitulo" class="form-label">Título pregunta</label>
-                                    <input type="text" class="form-control" name="txtTitulo1" id="txtTitulo1" placeholder="Ingrese el título1">
+                                    <input type="text" class="form-control" name="txtTitulo1" id="txtTitulo1" placeholder="Ingrese el título">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3">
                                 <label for="txtDescripcion1" class="form-label">Descripción pregunta</label>
-                                <input class="form-control" name="txtDescripcion1" id="txtDescripcion1" placeholder="Ingrese la descripción1"></input>
+                                <input class="form-control" name="txtDescripcion1" id="txtDescripcion1" placeholder="Ingrese la descripción"></input>
                             </div>
                         </div>
                         <div class="row">
