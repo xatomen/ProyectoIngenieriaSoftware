@@ -4,6 +4,11 @@
 
 include("./admin/config/bd.php");
 
+$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM IMAGEN_CARRUSEL WHERE MOSTRAR_IMG_CARRUSEL=1");
+$sentenciaSQL->execute();
+$resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
+$firstPos = $resultado['firstPos'];
+
 $sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_CARRUSEL ORDER BY POSICION_IMG");
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
@@ -22,11 +27,11 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <div class="carousel-inner">
 
         <!-- ACÁ DEBEMOS PONER EL PHP CODE -->
-        <?php foreach($listaImagenes as $link_imagen) { ?>
-            <div class= "<?php if($link_imagen['POSICION_IMG']==1){echo "carousel-item active";}else{echo "carousel-item";}?>">
+        <?php foreach($listaImagenes as $link_imagen) { if($link_imagen['MOSTRAR_IMG_CARRUSEL']==1){?>
+            <div class= "<?php if($link_imagen['POSICION_IMG']==$firstPos){echo "carousel-item active"; $firstPos=0;}else{echo "carousel-item";}?>">
                 <img src="<?php echo $link_imagen['IMAGEN_CARRUSEL'] ?>" class="d-block w-100" alt="...">
             </div>
-        <?php } ?>
+        <?php } } ?>
 
 
         </div>

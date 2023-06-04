@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
 
-    <!-- <script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script> -->
-    <!-- <script type="text/javascript" src="./src/main.js"></script> -->
-    <!-- <script type="text/javascript" src="./src/bulma-collapsible.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="./src/main.css">
-    <link rel="stylesheet" href="./src/bulma-collapsible.min.css">
-    <link rel="stylesheet" href="./src/bulma-carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
@@ -37,6 +28,9 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="quienes_somos.php">Quienes somos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="productos.php">Productos</a>
