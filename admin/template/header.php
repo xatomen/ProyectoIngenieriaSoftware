@@ -29,6 +29,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="menu_inicio.php" class="nav-link text-white">
+                        Menú inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu_quienes_somos.php" class="nav-link text-white">
+                        Menú quienes somos
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="menu_carrusel.php" class="nav-link text-white">
                         Menú carrusel
                         </a>
@@ -43,6 +53,7 @@
                         Menú productos
                         </a>
                     </li>
+                    
                 </ul>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">

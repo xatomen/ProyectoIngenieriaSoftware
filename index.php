@@ -13,26 +13,28 @@ $sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_CARRUSEL ORDER BY POSICI
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
+$sentenciaSQL = $conexion->prepare("SELECT * FROM INICIO ORDER BY POSICION");
+$sentenciaSQL->execute();
+$listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
+<div class="">
 
-<div class="box m-5">
-    <h1 class="title">Inicio</h1>
-    <hr>
-    <p1>hola Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo id iure, quam fuga illum iusto optio neque deserunt tempora distinctio eum corrupti? Ratione fugiat maxime atque harum aliquam unde! Et. hola</p1>
-        
 
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner img-carrusel carousel-centrar shadow position-relative">
 
         <!-- ACÁ DEBEMOS PONER EL PHP CODE -->
         <?php foreach($listaImagenes as $link_imagen) { if($link_imagen['MOSTRAR_IMG_CARRUSEL']==1){?>
-            <div class= "<?php if($link_imagen['POSICION_IMG']==$firstPos){echo "carousel-item active"; $firstPos=0;}else{echo "carousel-item";}?>">
+            <div class= "<?php if($link_imagen['POSICION_IMG']==$firstPos){echo "carousel-item active shadow"; $firstPos=0;}else{echo "carousel-item shadow";}?>">
                 <img src="<?php echo $link_imagen['IMAGEN_CARRUSEL'] ?>" class="d-block w-100" alt="...">
             </div>
         <?php } } ?>
 
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <a class="btn btn-warning border-dark shadow" href="./productos.php">Ver más diseños aquí</a>
+        </div>
 
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -44,8 +46,21 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    
+
  </div>
+
+<div class="container">
+    <div class="card p-3 m-5 shadow">
+        <h1 class="title">Inicio</h1>
+        <hr>
+        <?php foreach($listaInicio as $inicio){ ?>
+
+            <?php if($inicio['TIPO_TEXTO']==1){ ?><h1><?php echo $inicio['TEXTO'];}?></h1>
+            <?php if($inicio['TIPO_TEXTO']==2){ ?><p><?php echo $inicio['TEXTO'];}?></p>
+
+        <?php } ?>
+    </div>
+</div>
 
 <script>
     const carousel = new bootstrap.Carousel('#carouselExample')
