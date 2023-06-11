@@ -149,14 +149,14 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label for="txtTexto" class="form-label">Título pregunta</label>
+                                    <label for="txtTexto" class="form-label">Texto</label>
                                     <input type="text" class="form-control" name="txtTexto" id="txtTexto" value="<?php echo $txtTexto?>" placeholder="Ingrese el texto">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3">
-                                <label for="txtTipoTexto" class="form-label">Descripción pregunta</label>
+                                <label for="txtTipoTexto" class="form-label">Tipo texto</label>
                                 <input class="form-control" name="txtTipoTexto" id="txtTipoTexto" value="<?php echo $txtTipoTexto?>" placeholder="Ingrese el tipo de texto"></input>
                             </div>
                         </div>

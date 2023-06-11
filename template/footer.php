@@ -15,7 +15,7 @@
                 <div class="col">
                     <h3 class="text-center">Redes sociales</h3>
                     <hr>   
-                    <img src="https://img.icons8.com/?size=512&id=CtrV2SV33rD9&format=png" style="max-width:100px">
+                    <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
                     <img src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" style="max-width:100px">
                     <img src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-512.png" style="max-width:100px">
                 </div>

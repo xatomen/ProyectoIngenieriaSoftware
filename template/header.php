@@ -22,6 +22,11 @@ $query = $_SERVER['QUERY_STRING'];
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9ec646ac25.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Familjen+Grotesk&family=Indie+Flower&family=Kalam:wght@300;400&family=Pacifico&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -41,6 +46,27 @@ $query = $_SERVER['QUERY_STRING'];
         .carousel-centrar{
             display:flex;
             align-items:center;
+        }
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+        .font-courgette{
+            font-family: 'Courgette', cursive;
+        }
+        .font-familjen-grotesk{
+            font-family: 'Familjen Grotesk', sans-serif;
+        }
+        .font-indie-flower{
+            font-family: 'Indie Flower', cursive;
+        }
+        .font-kalam{
+            font-family: 'Kalan', cursive;
+        }
+        .font-ubuntu-condensed{
+            font-family: 'Ubuntu Condensed', sans-serif;
+        }
+        .text-justify{
+            text-align: justify;
         }
     </style>
 
