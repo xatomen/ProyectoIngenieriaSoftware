@@ -14,10 +14,16 @@
                 </div>
                 <div class="col">
                     <h3 class="text-center">Redes sociales</h3>
-                    <hr>   
-                    <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
-                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/413/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" style="max-width:100px">
-                    <img src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-512.png" style="max-width:100px">
+                    <hr>
+                    <div class="row text-center">
+                        
+                        <div class="col"><h1><a href="https://web.facebook.com/people/Bethel-individuales/100073644857835/?_rdc=1&_rdr"><i class="fa-brands fa-facebook fa-xl" style="color: #005eff;"></i></a></h1></div>
+                        <div class="col"><h1><a href="https://www.instagram.com/individuales_bethel/"><i class="fa-brands fa-instagram fa-xl" style="color: #f53d9f;"></i></a></h1></div>
+                        <div class="col"><h1><a href=""><i class="fa-brands fa-whatsapp fa-xl" style="color: #00ff62;"></i></a></h1></div>
+                    </div>
+                    
+                    
+                    
                 </div>
                 <div class="col">
                     <h3 class="text-center">Horarios</h3>

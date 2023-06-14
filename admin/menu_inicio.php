@@ -118,8 +118,14 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="row">
                             <div class="mb-3">
-                                <label for="txtTipoTexto1" class="form-label">Tipo texto</label>
-                                <input class="form-control" name="txtTipoTexto1" id="txtTipoTexto1" placeholder="Ingrese el tipo de texto"></input>
+                                <!-- <label for="txtTipoTexto1" class="form-label">Tipo texto</label>
+                                <input class="form-control" name="txtTipoTexto1" id="txtTipoTexto1" placeholder="Ingrese el tipo de texto"></input> -->
+                                <select for="txtTipoTexto1" class="form-control" id="txtTipoTexto1" name="txtTipoTexto1" aria-label="Seleccione el tipo de texto">
+                                        <option selected>Seleccione el tipo de texto</option>
+                                        <option value="1">Texto</option>
+                                        <option value="2">Párrafo</option>
+                                        <option value="3">Frase</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -156,8 +162,14 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="row">
                             <div class="mb-3">
-                                <label for="txtTipoTexto" class="form-label">Tipo texto</label>
-                                <input class="form-control" name="txtTipoTexto" id="txtTipoTexto" value="<?php echo $txtTipoTexto?>" placeholder="Ingrese el tipo de texto"></input>
+                                <!-- <label for="txtTipoTexto" class="form-label">Tipo texto</label>
+                                <input class="form-control" name="txtTipoTexto" id="txtTipoTexto" value="<?php echo $txtTipoTexto?>" placeholder="Ingrese el tipo de texto"></input> -->
+                                <select for="txtTipoTexto" class="form-control" id="txtTipoTexto" name="txtTipoTexto" aria-label="Seleccione el tipo de texto">
+                                        <option selected>Seleccione el tipo de texto</option>
+                                        <option value="1">Texto</option>
+                                        <option value="2">Párrafo</option>
+                                        <option value="3">Frase</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -188,8 +200,15 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-1 border"><?php echo $lista['POSICION'] ?></div>
                 <div class="col-1 border"><?php echo $lista['ID_INICIO'] ?></div>
                 <div class="col-2 border"><?php echo $lista['TEXTO'] ?></div>
-                <div class="col-2 border"><?php echo $lista['TIPO_TEXTO'] ?></div>
-                <div class="col-1 border"><?php echo $lista['MOSTRAR'] ?></div>
+                <div class="col-2 border">
+                    <?php if($lista['TIPO_TEXTO']==1){ ?> <p class="rounded-pill text-white bg-primary text-center"><?php echo "Título";  ?></p> <?php } ?>
+                    <?php if($lista['TIPO_TEXTO']==2){ ?> <p class="rounded-pill bg-warning text-center"><?php echo "Párrafo"; ?></p> <?php } ?>
+                    <?php if($lista['TIPO_TEXTO']==3){ ?> <p class="rounded-pill bg-info text-center"><?php echo "Frase";   ?></p> <?php } ?>
+                </div>
+                <div class="col-1 border">
+                    <?php if($lista['MOSTRAR']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                    <?php if($lista['MOSTRAR']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                </div>
                 <div class="col border">
                     <form method="POST">
                         <div class="row border">

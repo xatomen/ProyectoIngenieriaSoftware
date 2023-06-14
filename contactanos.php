@@ -4,7 +4,7 @@
     <div class="card p-5 m-5 shadow">
         <h1 class="title font-pacifico">Contáctanos</h1>
         <hr>
-        <p1 class="font-familjen-grotesk fs-4 text-justify">hola Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo id iure, quam fuga illum iusto optio neque deserunt tempora distinctio eum corrupti? Ratione fugiat maxime atque harum aliquam unde! Et. hola</p1>
+        <p1 class="font-familjen-grotesk fs-4 text-justify">A continuación tienes a disposición un formulario de contacto para enviarnos tus consultas, sugerencias, reclamos, cotizaciones, etc.</p1>
         
         <div class="row">
             <h2 class="text-center">Formulario de contacto</h2>

@@ -241,7 +241,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-2 border">Titulo</div>
             <div class="col-2 border">Descripción</div>
             <div class="col border">Imágenes</div>
-            <div class="col-1 border">Estado</div>
+            <div class="col-1 border">Mostrar</div>
             <div class="col-2 border">Editar elemento</div>
         </div>
         <?php foreach($listaProductos as $lista) {?>
@@ -301,7 +301,10 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 
-                <div class="col-1 border"><?php echo $lista['MOSTRAR_PRODUCTO'] ?></div>
+                <div class="col-1 border">
+                    <?php if($lista['MOSTRAR_PRODUCTO']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                    <?php if($lista['MOSTRAR_PRODUCTO']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                </div>
                 <div class="col-2 border">
                     <form method="POST">
                         <div class="row border">

@@ -13,6 +13,20 @@
         }
     </style>
 </head>
+
+<?php
+$uri = $_SERVER['REQUEST_URI'];
+// echo $uri; // Outputs: URI
+ 
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+ 
+$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+// echo $url; // Outputs: Full URL
+ 
+$query = $_SERVER['QUERY_STRING'];
+// echo $query; // Outputs: Query String
+?>
+
 <body>
     <div class="row m-2">
         <div class="col-2">
@@ -24,32 +38,32 @@
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="inicio_admin.php" class="nav-link active" aria-current="page">
+                        <a href="inicio_admin.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/inicio_admin.php"){echo "active";}?>">
                         Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="menu_inicio.php" class="nav-link text-white">
+                        <a href="menu_inicio.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_inicio.php"){echo "active";}?>">
                         Menú inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="menu_quienes_somos.php" class="nav-link text-white">
+                        <a href="menu_quienes_somos.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_quienes_somos.php"){echo "active";}?>">
                         Menú quienes somos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="menu_carrusel.php" class="nav-link text-white">
+                        <a href="menu_carrusel.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_carrusel.php"){echo "active";}?>">
                         Menú carrusel
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="menu_preguntas_frecuentes.php" class="nav-link text-white">
+                        <a href="menu_preguntas_frecuentes.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_preguntas_frecuentes.php"){echo "active";}?>">
                         Menú preguntas frecuentes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="menu_productos.php" class="nav-link text-white">
+                        <a href="menu_productos.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_productos.php"){echo "active";}?>">
                         Menú productos
                         </a>
                     </li>

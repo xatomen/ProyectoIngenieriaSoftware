@@ -6,7 +6,8 @@
     </h1>
     <hr>
     <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolor non, optio molestias adipisci modi aspernatur, laudantium sunt autem vitae nihil enim iusto ea. Doloribus eum eos eveniet voluptate dolorem.
+        Bienvenido al sistema de gestión de sitio web Individuales Bethel.
+        Al costado izquierdo se encuentra el menú en donde se encuentran los submenús para editar la página de inicio, el carrusel de imágenes de la página de inicio, el menú de preguntas frecuentes, el menú de productos y el menú de quiénes somos.
     </p>
 </div>
 

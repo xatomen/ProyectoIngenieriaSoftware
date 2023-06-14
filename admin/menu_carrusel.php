@@ -185,7 +185,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-2 border">Link imágen</div>
             <div class="col-2 border">Descripción</div>
             <div class="col border">Previsualización</div>
-            <div class="col-1 border">Estado</div>
+            <div class="col-1 border">Mostrar</div>
             <div class="col border">Editar elemento</div>
         </div>
         <?php foreach($listaImagenes as $lista) {?>
@@ -195,7 +195,10 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-2 border"><?php echo $lista['IMAGEN_CARRUSEL'] ?></div>
                 <div class="col-2 border"><?php echo $lista['DESCRIPCION_IMG_CARRUSEL'] ?></div>
                 <div class="col border"><img src="<?php echo $lista['IMAGEN_CARRUSEL'] ?>" style="max-width:250px;"></div>
-                <div class="col-1 border"><?php echo $lista['MOSTRAR_IMG_CARRUSEL'] ?></div>
+                <div class="col-1 border">
+                    <?php if($lista['MOSTRAR_IMG_CARRUSEL']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                    <?php if($lista['MOSTRAR_IMG_CARRUSEL']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                </div>
                 <div class="col border">
                     <form method="POST">
                         <div class="row border">

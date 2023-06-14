@@ -73,7 +73,7 @@ $query = $_SERVER['QUERY_STRING'];
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "fixed-top bg-ligth trn";} else{echo "sitcky-top bg-ligth trn";}?>">
+<nav class="navbar navbar-expand-lg <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "navbar-dark fixed-top bg-light trn";} else{echo "sitcky-top navbar-light";}?>" style="<?php if($url!="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "background-color: white";}?>">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php"><img src="https://i.postimg.cc/HshmbPXn/individuales-bethel-2.png" style="width:100px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,23 +83,22 @@ $query = $_SERVER['QUERY_STRING'];
         <div class="justify-content-end">
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                    <a class="nav-link <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "active";}?>" aria-current="page" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="quienes_somos.php">Quienes somos</a>
+                    <a class="nav-link <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/quienes_somos.php"){echo "active";}?>" href="quienes_somos.php">Quiénes somos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="productos.php">Productos</a>
+                    <a class="nav-link <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/productos.php"){echo "active";}?>" href="productos.php">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas_frecuentes.php">Preguntas frencuentes</a>
+                    <a class="nav-link <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/preguntas_frecuentes.php"){echo "active";}?>" href="preguntas_frecuentes.php">Preguntas frencuentes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contactanos.php">Contáctanos</a>
+                    <a class="nav-link <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/contactanos.php"){echo "active";}?>" href="contactanos.php">Contáctanos</a>
                 </li>
             </ul>
         </div>
-      
     </div>
   </div>
 </nav>
