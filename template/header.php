@@ -24,6 +24,8 @@ $query = $_SERVER['QUERY_STRING'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9ec646ac25.js" crossorigin="anonymous"></script>
 
+    <script src="../src/max_length_input.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Familjen+Grotesk&family=Indie+Flower&family=Kalam:wght@300;400&family=Pacifico&family=Ubuntu+Condensed&display=swap" rel="stylesheet">

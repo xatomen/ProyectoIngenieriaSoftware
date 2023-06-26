@@ -2,6 +2,8 @@
 
 <?php
 
+require 'config/config.php';
+
 include("./admin/config/bd.php");
 
 $sentenciaSQL= $conexion->prepare("SELECT * FROM PRODUCTO ORDER BY POSICION_PRODUCTO");
@@ -39,8 +41,8 @@ $contador = 1;
                             <h5 class="card-title"><?php echo $lista['TITULO_PRODUCTO'] ?></h5>
                             <p class="card-text"><?php echo $lista['DESCRIPCION_PRODUCTO'] ?></p>
                             <div class="row text-center">
-                                <div class="col-1"></div>    
-                                <div class="col"><a href="#" class="btn btn-primary">Ver más detalles</a></div>
+                                <div class="col-1"></div>
+                                <div class="col"><a href="detalle_producto.php?id=<?php echo $lista['ID_PRODUCTO']; ?>&token=<?php echo hash_hmac('sha1',$lista['ID_PRODUCTO'],KEY_TOKEN); ?>" class="btn btn-primary">Ver más detalles</a></div>
                                 <div class="col-1"></div>
                             </div>
                             

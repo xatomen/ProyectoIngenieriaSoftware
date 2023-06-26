@@ -44,14 +44,27 @@
                     </div>
                     
                     <div class="mb-3">
+                        <!-- <input type="text" maxlength="150"/> -->
                         <label for="exampleFormControlTextarea1" class="form-label">Escriba el mensaje</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" maxlength="1500" id="mensaje"></textarea>
+                        <div id="contador">(0/1500)</div>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary" type="submit">Enviar</button>
                     </div>
                 </div>
             </div>
+
+            <script>
+                const mensaje = document.getElementById('mensaje');
+                const contador = document.getElementById('contador');
+                mensaje.addEventListener('input', function(e) {
+                    const target = e.target;
+                    const longitudMax = target.getAttribute('maxlength');
+                    const longitudAct = target.value.length;
+                    contador.innerHTML = `(${longitudAct}/${longitudMax})`;
+                });
+            </script>
 
             <div class="col-2"></div>
 

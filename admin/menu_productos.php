@@ -286,7 +286,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="mb-3">
                                                 <input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PRODUCTO'] ?>"></input>
                                                 <label for="txtLinkImagen" class="form-label">Link imágen</label>
-                                                <input type="text" class="form-control" name="txtLinkImagen" id="txtLinkImagen" placeholder="Ingrese el título">
+                                                <input type="text" class="form-control" name="txtLinkImagen" id="txtLinkImagen" placeholder="Ingrese el link">
                                             </div>
                                         </div>
                                     </div>
