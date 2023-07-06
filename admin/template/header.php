@@ -1,3 +1,28 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['usuario'])){
+    header("Location:../inicio_sesion.php");
+}
+else{
+    if($_SESSION['usuario']=="ok"){
+        $nombreUsuario=$_SESSION["nombreUsuario"];
+    }
+}
+
+$uri = $_SERVER['REQUEST_URI'];
+// echo $uri; // Outputs: URI
+ 
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+ 
+$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+// echo $url; // Outputs: Full URL
+ 
+$query = $_SERVER['QUERY_STRING'];
+// echo $query; // Outputs: Query String
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,18 +39,6 @@
     </style>
 </head>
 
-<?php
-$uri = $_SERVER['REQUEST_URI'];
-// echo $uri; // Outputs: URI
- 
-$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
- 
-$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-// echo $url; // Outputs: Full URL
- 
-$query = $_SERVER['QUERY_STRING'];
-// echo $query; // Outputs: Query String
-?>
 
 <body>
     <div class="row m-2">
@@ -72,7 +85,7 @@ $query = $_SERVER['QUERY_STRING'];
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="../index.php" class="nav-link text-white bg-danger">
+                        <a href="salir.php" class="nav-link text-white bg-danger">
                         Salir
                         </a>
                     </li>

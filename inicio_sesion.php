@@ -8,33 +8,29 @@
     $sentenciaSQL->execute();
     $listaCredenciales=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($listaCredenciales as $credencial)
+foreach ($listaCredenciales as $credencial){
 
-    // $username = $_POST['usuario'];
-    // $contrasenia = $_POST['contrasenia'];
-
+    $username = "";
+    $contrasenia = "";
 
     if($_POST){
         if($_POST){
-            if($_POST['usuario']<>$credencial['usuario'] && $_POST['contrasenia']<>$credencial['contrasenia']){ //Verificamos inicio de sesión
-                $mensaje = "Usuario y/o contraseña incorrectos";
-                echo $mensaje;
+            if(($_POST['usuario']==$credencial['usuario']) && ($_POST['password']==$credencial['contrasenia'])){ //Verificamos inicio de sesión
+                $_SESSION['usuario'] = "ok";
+                $_SESSION['nombreUsuario'] = "Administrador";
+                header('Location: ./admin/inicio_admin.php');
             }
             else{
-                $_SESSION['usuario'] = "ok";
-                $_SESSION['nombreUsuario'] = "usuario";
-                header('Location: ./admin/inicio_admin.php');
+                $mensaje = "Usuario y/o contraseña incorrectos";
             }
             
         }
         else {
             $mensaje = "Usuario y/o contraseña incorrectos";
-            echo $mensaje;
         }
     }
 
-    $username = "";
-    $contrasenia = "";
+}
 
 ?>
 
@@ -65,6 +61,11 @@
                             <hr>
                         </div>
                         <div class="mb-3">
+                            <?php if(isset($mensaje)) {?>
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <?php echo $mensaje; ?>
+                                </div>
+                            <?php } ?>
                             <label for="exampleInputEmail1" class="form-label">Usuario</label>
                             <input name="usuario" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
@@ -74,6 +75,7 @@
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Ingresar</button>
+                            <a class="btn btn-info" href="index.php">Ir al inicio</a>
                         </div>
                         
                     </form>
