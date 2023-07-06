@@ -17,7 +17,8 @@
     if($_POST){
         if($_POST){
             if($_POST['usuario']<>$credencial['usuario'] && $_POST['contrasenia']<>$credencial['contrasenia']){ //Verificamos inicio de sesión
-                
+                $mensaje = "Usuario y/o contraseña incorrectos";
+                echo $mensaje;
             }
             else{
                 $_SESSION['usuario'] = "ok";

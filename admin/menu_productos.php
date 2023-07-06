@@ -122,10 +122,13 @@ switch ($accion){
 
         case "Agregar":
             //Obtenemos el último índice y la última posición
-            $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_PRODUCTO) AS lastIndex, MAX(POSICION_IMG) AS lastPos FROM IMAGEN_PRODUCTO");
+            $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_PRODUCTO) AS lastIndex FROM IMAGEN_PRODUCTO");
             $sentenciaSQL->execute();
             $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
             $lastindex = $resultado['lastIndex']+1;
+            $sentenciaSQL = $conexion->prepare("SELECT MAX(POSICION_IMG) AS lastPos FROM IMAGEN_PRODUCTO WHERE ID_PRODUCTO = $txtID");
+            $sentenciaSQL->execute();
+            $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
             $lastpos = $resultado['lastPos']+1;
 
 
