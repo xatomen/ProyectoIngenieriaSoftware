@@ -29,12 +29,27 @@ $query = $_SERVER['QUERY_STRING'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/inicio_admin.php"){echo "Inicio";}?>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_inicio.php"){echo "Menú inicio";}?>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_quienes_somos.php"){echo "Menú quiénes somos";}?>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_carrusel.php"){echo "Menú carrusel";}?>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_preguntas_frecuentes.php"){echo "Menú preguntas frecuentes";}?>
+        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_productos.php"){echo "Menú productos";}?>
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <style>
         body {
-        background-image: url('https://i.pinimg.com/originals/da/7d/35/da7d355e9d3453c9fc63dbfafdeec17b.jpg');
+            /* background-image: url('https://i.pinimg.com/originals/da/7d/35/da7d355e9d3453c9fc63dbfafdeec17b.jpg'); */
+            background-image: url('https://e1.pxfuel.com/desktop-wallpaper/581/154/desktop-wallpaper-backgrounds-for-login-page-login-page.jpg');
+            backdrop-filter: blur(15px);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/inicio_admin.php"){echo "height: 100vh;";}?>
+            /* width: 100%; */
         }
     </style>
 </head>
@@ -44,9 +59,7 @@ $query = $_SERVER['QUERY_STRING'];
     <div class="row m-2">
         <div class="col-2">
             <div class="card m-1 p-3 text-bg-dark">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                <span class="fs-4">Sistema</span>
+                <span class="fs-4 text-center">Sistema</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -62,7 +75,7 @@ $query = $_SERVER['QUERY_STRING'];
                     </li>
                     <li class="nav-item">
                         <a href="menu_quienes_somos.php" class="nav-link text-white <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/admin/menu_quienes_somos.php"){echo "active";}?>">
-                        Menú quienes somos
+                        Menú quiénes somos
                         </a>
                     </li>
                     <li class="nav-item">
@@ -86,7 +99,7 @@ $query = $_SERVER['QUERY_STRING'];
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="salir.php" class="nav-link text-white bg-danger">
-                        Salir
+                        Cerrar sesión y salir
                         </a>
                     </li>
                 </ul>

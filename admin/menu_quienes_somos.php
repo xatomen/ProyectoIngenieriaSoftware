@@ -93,11 +93,11 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <h1 class="">
-        Menú quienes somos
+        Menú quiénes somos
     </h1>
     <hr>
     <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolor non, optio molestias adipisci modi aspernatur, laudantium sunt autem vitae nihil enim iusto ea. Doloribus eum eos eveniet voluptate dolorem.
+        En este menú se pueden modificar los títulos, parrafos y frases de la sección quiénes somos.
     </p>
 
     <div class="row">

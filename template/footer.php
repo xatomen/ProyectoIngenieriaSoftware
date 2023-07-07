@@ -1,7 +1,11 @@
 </div>
 </div>
-        
-    <footer class="bd-footer bg-body-tertiary fix-bottom p-5">
+    <style>
+        .footer-background{
+
+        }
+    </style>
+    <footer class="bd-footer bg-body-tertiary fix-bottom p-5 footer-background">
         <div class="container">
             <div class="row">
                 <div class="col">

@@ -97,7 +97,7 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
     </h1>
     <hr>
     <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolor non, optio molestias adipisci modi aspernatur, laudantium sunt autem vitae nihil enim iusto ea. Doloribus eum eos eveniet voluptate dolorem.
+        En este menú se pueden modificar los textos que se muestran en la página de inicio.
     </p>
 
     <div class="row">
