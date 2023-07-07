@@ -11,10 +11,6 @@ require 'config/config.php';
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 $token = isset($_GET['token']) ? $_GET['token'] : '';
 
-echo $id;
-    // echo $token;
-    echo " ";
-
 if($id == ' ' || $token == ' '){
     // echo $id;
     // echo $token;

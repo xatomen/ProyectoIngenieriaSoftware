@@ -15,16 +15,19 @@ $accion = (isset($_POST['accion']))?$_POST['accion']:"";
 switch ($accion){
 
     case "Activar":
+        $mensaje = "Texto activado satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET MOSTRAR=1 WHERE ID_INICIO=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
+        $mensaje = "Texto desactivado satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET MOSTRAR=0 WHERE ID_INICIO=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
+        $mensaje = "Texto subido de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET POSICION=POSICION+1 WHERE POSICION=(SELECT POSICION FROM INICIO WHERE ID_INICIO=$txtID)-1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET POSICION=POSICION-1 WHERE ID_INICIO=$txtID");
@@ -32,6 +35,7 @@ switch ($accion){
         break;
 
     case "Bajar":
+        $mensaje = "Texto bajado de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET POSICION=POSICION-1 WHERE POSICION=(SELECT POSICION FROM INICIO WHERE ID_INICIO=$txtID)+1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE INICIO SET POSICION=POSICION+1 WHERE ID_INICIO=$txtID");
@@ -50,6 +54,7 @@ switch ($accion){
         break;
 
     case "Editar":
+        $mensaje = "Texto editado satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("UPDATE INICIO SET TIPO_TEXTO=:TIPO_TEXTO, TEXTO=:TEXTO WHERE ID_INICIO=:ID_INICIO");
         $sentenciaSQL->bindParam(':TIPO_TEXTO', $txtTipoTexto);
         $sentenciaSQL->bindParam(':TEXTO', $txtTexto);
@@ -61,6 +66,7 @@ switch ($accion){
         break;
 
     case "Agregar":
+        $mensaje = "Texto agregado satisfactoriamente";
         //Obtenemos el último índice y la última posición
         $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_INICIO) AS lastIndex, MAX(POSICION) AS lastPos FROM INICIO");
         $sentenciaSQL->execute();
@@ -79,6 +85,7 @@ switch ($accion){
         break;
 
     case "Eliminar":
+        $mensaje = "Texto eliminado satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("DELETE FROM INICIO WHERE ID_INICIO=:ID_INICIO");
         $sentenciaSQL->bindParam(":ID_INICIO",$txtID);
         $sentenciaSQL->execute();
@@ -99,7 +106,11 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
     <p>
         En este menú se pueden modificar los textos que se muestran en la página de inicio.
     </p>
-
+    <?php if(isset($mensaje)) {?>
+        <div class="alert alert-success text-center" role="alert">
+            <?php echo $mensaje; ?>
+        </div>
+    <?php } ?>
     <div class="row">
         <div class="col"></div>
         <div class="col">

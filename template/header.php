@@ -19,12 +19,22 @@ $query = $_SERVER['QUERY_STRING'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "Inicio";}?>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/quienes_somos.php"){echo "Quiénes somos";}?>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/productos.php"){echo "Productos";}?>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/preguntas_frecuentes.php"){echo "Preguntas frecuentes";}?>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/contactanos.php"){echo "Contáctanos";}?>
-        <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/detalle_producto.php"){echo "Detalle producto";}?> //VER ESTE CASO!!!!!!
+        <?php
+            if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "Inicio";}
+            else{
+                if($url=="http://localhost/ProyectoIngenieriaSoftware/quienes_somos.php"){echo "Quiénes somos";}
+                else{
+                    if($url=="http://localhost/ProyectoIngenieriaSoftware/productos.php"){echo "Productos";}
+                    else{
+                        if($url=="http://localhost/ProyectoIngenieriaSoftware/preguntas_frecuentes.php"){echo "Preguntas frecuentes";}
+                        else{
+                            if($url=="http://localhost/ProyectoIngenieriaSoftware/contactanos.php"){echo "Contáctanos";}
+                            else{echo "Detalle producto";}
+                        }
+                    }
+                }
+            }
+        ?>
     </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -91,7 +101,9 @@ $query = $_SERVER['QUERY_STRING'];
 
 <nav class="navbar navbar-expand-lg <?php if($url=="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "navbar-dark fixed-top bg-light trn";} else{echo "sitcky-top navbar-light";}?>" style="<?php if($url!="http://localhost/ProyectoIngenieriaSoftware/index.php"){echo "background-color: white";}?>">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><img src="https://i.postimg.cc/HshmbPXn/individuales-bethel-2.png" style="width:100px;"></a>
+    <!-- <a class="navbar-brand" href="index.php"><img src="https://i.postimg.cc/HshmbPXn/individuales-bethel-2.png" style="width:100px;"></a> -->
+    <a class="navbar-brand" href="index.php"><img src="https://i.postimg.cc/NFZSV9cP/individuales-bethel-2.png" style="width:100px;"></a>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

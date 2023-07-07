@@ -15,16 +15,19 @@ $accion = (isset($_POST['accion']))?$_POST['accion']:"";
 switch ($accion){
 
     case "Activar":
+        $mensaje = "Imágen activada satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET MOSTRAR_IMG_CARRUSEL=1 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
+        $mensaje = "Imágen desactivada satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET MOSTRAR_IMG_CARRUSEL=0 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
+        $mensaje = "Imágen subida de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=$txtID)-1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_CARRUSEL=$txtID");
@@ -32,6 +35,7 @@ switch ($accion){
         break;
 
     case "Bajar":
+        $mensaje = "Imágen bajada de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=$txtID)+1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_CARRUSEL=$txtID");
@@ -50,6 +54,7 @@ switch ($accion){
         break;
 
     case "Editar":
+        $mensaje = "Imágen editada satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("UPDATE IMAGEN_CARRUSEL SET DESCRIPCION_IMG_CARRUSEL=:DESCRIPCION_IMG_CARRUSEL, IMAGEN_CARRUSEL=:IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
         $sentenciaSQL->bindParam(':DESCRIPCION_IMG_CARRUSEL', $txtDescripcion);
         $sentenciaSQL->bindParam(':IMAGEN_CARRUSEL', $txtLinkImagen);
@@ -61,6 +66,7 @@ switch ($accion){
         break;
 
     case "Agregar":
+        $mensaje = "Imágen agregada satisfactoriamente";
         //Obtenemos el último índice y la última posición
         $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_CARRUSEL) AS lastIndex, MAX(POSICION_IMG) AS lastPos FROM IMAGEN_CARRUSEL");
         $sentenciaSQL->execute();
@@ -79,6 +85,7 @@ switch ($accion){
         break;
 
     case "Eliminar":
+        $mensaje = "Imágen eliminada satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("DELETE FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
         $sentenciaSQL->bindParam(":ID_IMG_CARRUSEL",$txtID);
         $sentenciaSQL->execute();
@@ -100,7 +107,11 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
     <p>
         En este menú se puede modificar las imágenes que se muestran en el carrusel de la página de inicio.
     </p>
-
+    <?php if(isset($mensaje)) {?>
+        <div class="alert alert-success text-center" role="alert">
+            <?php echo $mensaje; ?>
+        </div>
+    <?php } ?>
     <div class="row">
         
         <div class="col"></div>

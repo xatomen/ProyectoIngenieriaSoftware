@@ -18,7 +18,6 @@ $sentenciaSQL->execute();
 $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <div class="">
 
 
@@ -33,7 +32,7 @@ $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <?php } } ?>
 
         <div class="position-absolute top-50 start-50 translate-middle">
-            <a class="btn bg-warning  p-4 rounded-pill bg-opacity-75 text-black border-dark shadow font-indie-flower fs-4" href="./productos.php">Ver más diseños aquí</a>
+            <a class="btn bg-warning p-4 rounded-pill bg-opacity-75 text-black border-dark shadow font-indie-flower fs-4" href="./productos.php">Ver más diseños aquí</a>
         </div>
 
         </div>

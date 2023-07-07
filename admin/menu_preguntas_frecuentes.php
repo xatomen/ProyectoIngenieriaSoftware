@@ -15,16 +15,19 @@ $accion = (isset($_POST['accion']))?$_POST['accion']:"";
 switch ($accion){
 
     case "Activar":
+        $mensaje = "Pregunta activada satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET MOSTRAR_PREGUNTA=1 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
+        $mensaje = "Pregunta desactivada satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET MOSTRAR_PREGUNTA=0 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
+        $mensaje = "Pregunta subida de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=$txtID)-1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE ID_PREGUNTA=$txtID");
@@ -32,6 +35,7 @@ switch ($accion){
         break;
 
     case "Bajar":
+        $mensaje = "Pregunta bajada de puesto satisfactoriamente";
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=$txtID)+1");
         $sentenciaSQL->execute();
         $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE ID_PREGUNTA=$txtID");
@@ -50,6 +54,7 @@ switch ($accion){
         break;
 
     case "Editar":
+        $mensaje = "Pregunta editada satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET DESCRIPCION_PREGUNTA=:DESCRIPCION_PREGUNTA, TITULO_PREGUNTA=:TITULO_PREGUNTA WHERE ID_PREGUNTA=:ID_PREGUNTA");
         $sentenciaSQL->bindParam(':DESCRIPCION_PREGUNTA', $txtDescripcion);
         $sentenciaSQL->bindParam(':TITULO_PREGUNTA', $txtTitulo);
@@ -61,6 +66,7 @@ switch ($accion){
         break;
 
     case "Agregar":
+        $mensaje = "Pregunta agregada satisfactoriamente";
         //Obtenemos el último índice y la última posición
         $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_PREGUNTA) AS lastIndex, MAX(POSICION_PREGUNTA) AS lastPos FROM PREGUNTAS_FRECUENTES");
         $sentenciaSQL->execute();
@@ -79,6 +85,7 @@ switch ($accion){
         break;
 
     case "Eliminar":
+        $mensaje = "Pregunta eliminada satisfactoriamente";
         $sentenciaSQL = $conexion->prepare("DELETE FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=:ID_PREGUNTA");
         $sentenciaSQL->bindParam(":ID_PREGUNTA",$txtID);
         $sentenciaSQL->execute();
@@ -101,7 +108,11 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
     <p>
         En este menú se pueden modificar las preguntas frecuentes.
     </p>
-
+    <?php if(isset($mensaje)) {?>
+        <div class="alert alert-success text-center" role="alert">
+            <?php echo $mensaje; ?>
+        </div>
+    <?php } ?>
     <div class="row">
         
         <div class="col"></div>
