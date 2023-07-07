@@ -56,7 +56,7 @@ $firstPos = $resultado['firstPos'];
         <div class="container">
         <?php foreach($listaProductos as $lista){ if($lista['MOSTRAR_PRODUCTO']==1){ ?>
             <div class="row">
-                <div class="col">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner img-carrusel carousel-centrar shadow position-relative">
 
@@ -79,7 +79,7 @@ $firstPos = $resultado['firstPos'];
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <h1 class="title font-pacifico"><?php echo $lista['TITULO_PRODUCTO'] ?></h1>
                     <hr>
                     <p1 class="font-familjen-grotesk fs-4 text-justify"><?php echo $lista['DESCRIPCION_PRODUCTO'] ?></p1>

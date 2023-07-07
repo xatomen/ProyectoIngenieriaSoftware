@@ -8,7 +8,7 @@
     <footer class="bd-footer bg-body-tertiary fix-bottom p-5 footer-background">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3 class="text-center">Contacto</h3>
                     <hr>
                     <ul>
@@ -16,7 +16,7 @@
                         <li>Dirección de correo:</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3 class="text-center">Redes sociales</h3>
                     <hr>
                     <div class="row text-center">
@@ -29,7 +29,7 @@
                     
                     
                 </div>
-                <div class="col">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3 class="text-center">Horarios</h3>
                     <hr>
                     <ul>
