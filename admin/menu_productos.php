@@ -177,10 +177,10 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <?php echo $mensaje; ?>
         </div>
     <?php } ?>
-    <div class="row">
+    <div class="row justify-content-around">
         
-        <div class="col"></div>
-        <div class="col">
+        <div class="col-xl"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Agregar producto</h4>
@@ -209,7 +209,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Editar elemento seleccionado</h4>
@@ -247,105 +247,107 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-xl"></div>
 
     </div>
 
-    <div class="card row m-5 shadow">
-        <div class="row">
-            <h4 class="p-2">Listado de productos</h4>
-        </div>
-        <div class="row">
-            <div class="col-1 border">Posición</div>
-            <div class="col-1 border">ID</div>
-            <div class="col-2 border">Titulo</div>
-            <div class="col-2 border">Descripción</div>
-            <div class="col border">Imágenes</div>
-            <div class="col-1 border">Mostrar</div>
-            <div class="col-2 border">Editar elemento</div>
-        </div>
-        <?php foreach($listaProductos as $lista) {?>
-            <div class="row">
-                <div class="col-1 border"><?php echo $lista['POSICION_PRODUCTO'] ?></div>
-                <div class="col-1 border"><?php echo $lista['ID_PRODUCTO'] ?></div>
-                <div class="col-2 border"><?php echo $lista['TITULO_PRODUCTO'] ?></div>
-                <div class="col-2 border"><?php echo $lista['DESCRIPCION_PRODUCTO'] ?></div>
-                <div class="col-3 border">
-                    <?php foreach($listaImagenes as $lista2) { if($lista2['ID_PRODUCTO']==$lista['ID_PRODUCTO']){?>
-                    <div class="row border">
-                        <div class="col">
-                            <img src="<?php echo $lista2['IMAGEN'] ?>" style="max-width:200px;">
-                        </div>
-                        <div class="col">
-                            <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+    <div class="card row m-5 shadow overflow-scroll">
+        <table class="table table-bordered">
+            <thead>
+                <h4 class="p-2">Listado de productos</h4>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Posición</td>
+                    <td>ID</td>
+                    <td>Titulo</td>
+                    <td>Descripción</td>
+                    <td>Imágenes</td>
+                    <td>Mostrar</td>
+                    <td>Editar elemento</td>
+                </tr>
+                <?php foreach($listaProductos as $lista){?>
+                <tr>
+                    <td><?php echo $lista['POSICION_PRODUCTO'] ?></td>
+                    <td><?php echo $lista['ID_PRODUCTO'] ?></td>
+                    <td><?php echo $lista['TITULO_PRODUCTO'] ?></td>
+                    <td><?php echo $lista['DESCRIPCION_PRODUCTO'] ?></td>
+                    <td>
+                        <?php foreach($listaImagenes as $lista2) { if($lista2['ID_PRODUCTO']==$lista['ID_PRODUCTO']){?>
+                            <div class="row border">
+                                <div class="col">
+                                    <img src="<?php echo $lista2['IMAGEN'] ?>" style="max-width:200px;">
+                                </div>
+                                <div class="col">
+                                    <div class="dropdown">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                        <ul class="dropdown-menu">
+                                            <form method="POST">
+                                                <div class="row m-1"><input type="hidden" name="txtID2" id="txtID2" value="<?php echo $lista2['ID_IMG_PRODUCTO'] ?>"></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Activar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==1){echo "disabled";}?>></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Desactivar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==0){echo "disabled";}?>></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Subir" class="btn btn-primary" <?php if($lista2['POSICION_IMG']==1){echo "disabled";}?>></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Bajar" class="btn btn-primary"></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Seleccionar" class="btn btn-info"></input></div>
+                                                <div class="row m-1"><input type="submit" name="accion_imagen" value="Eliminar" class="btn btn-danger"></input></div>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } } ?>
+                            <div class="dropdown text-center">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Agregar imágen</a>
                                 <ul class="dropdown-menu">
-                                    <form method="POST">
-                                        <div class="row m-1"><input type="hidden" name="txtID2" id="txtID2" value="<?php echo $lista2['ID_IMG_PRODUCTO'] ?>"></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Activar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==1){echo "disabled";}?>></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Desactivar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==0){echo "disabled";}?>></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Subir" class="btn btn-primary" <?php if($lista2['POSICION_IMG']==1){echo "disabled";}?>></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Bajar" class="btn btn-primary"></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Seleccionar" class="btn btn-info"></input></div>
-                                        <div class="row m-1"><input type="submit" name="accion_imagen" value="Eliminar" class="btn btn-danger"></input></div>
-                                    </form>
+                                    <div class="card p-3 shadow">
+                                        <h4 class="text-center">Agregar imágen</h4>
+                                        <hr>
+                                        <form method="POST">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PRODUCTO'] ?>"></input>
+                                                        <label for="txtLinkImagen" class="form-label">Link imágen</label>
+                                                        <input type="text" class="form-control" name="txtLinkImagen" id="txtLinkImagen" placeholder="Ingrese el link">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="text-center">
+                                                    <input class="btn btn-warning" type="submit" value="Agregar" name="accion_imagen">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <?php } } ?>
-                    <div class="dropdown text-center">
-                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Agregar imágen</a>
-                        <ul class="dropdown-menu">
-                            <div class="card p-3 shadow">
-                                <h4 class="text-center">Agregar imágen</h4>
-                                <hr>
-                                <form method="POST">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PRODUCTO'] ?>"></input>
-                                                <label for="txtLinkImagen" class="form-label">Link imágen</label>
-                                                <input type="text" class="form-control" name="txtLinkImagen" id="txtLinkImagen" placeholder="Ingrese el link">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="text-center">
-                                            <input class="btn btn-warning" type="submit" value="Agregar" name="accion_imagen">
-                                        </div>
-                                    </div>
-                                </form>
+                    </td>
+                    <td>
+                        <?php if($lista['MOSTRAR_PRODUCTO']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                        <?php if($lista['MOSTRAR_PRODUCTO']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                    </td>
+                    <td>
+                        <form method="POST">
+                            <div class="row border">
+                                <!-- <div class="col-3"></div> -->
+                                <div class="col">
+                                    <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PRODUCTO'] ?>"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_PRODUCTO']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_PRODUCTO']==0){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_PRODUCTO']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+                                </div>
+                                <!-- <div class="col-3"></div> -->
                             </div>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-1 border">
-                    <?php if($lista['MOSTRAR_PRODUCTO']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
-                    <?php if($lista['MOSTRAR_PRODUCTO']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
-                </div>
-                <div class="col-2 border">
-                    <form method="POST">
-                        <div class="row border">
-                            
-                            <!-- <div class="col-3"></div> -->
-                            <div class="col">
-                                <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PRODUCTO'] ?>"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_PRODUCTO']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_PRODUCTO']==0){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_PRODUCTO']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
-                            </div>
-                            <!-- <div class="col-3"></div> -->
-                        </div>
-                    </form>
-                </div>
-            </div>
-                    
-        <?php } ?>
+                        </form>
+                    </td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
     </div>
 
 <?php include("./template/footer.php") ?>

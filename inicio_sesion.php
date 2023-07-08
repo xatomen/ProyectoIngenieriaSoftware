@@ -66,10 +66,10 @@ foreach ($listaCredenciales as $credencial){
             <div class="col-8 card shadow">
                 <div class="row">
 
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <img class="img-fluid" src="https://static.vecteezy.com/system/resources/previews/005/637/993/original/man-making-work-concept-in-front-of-computer-with-tutorial-free-vector.jpg">
                     </div>
-                    <div class="col p-2">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 p-2">
                         <form method="post">
                             <div class="container text-center">
                                 <h1>Bienvenido!</h1>

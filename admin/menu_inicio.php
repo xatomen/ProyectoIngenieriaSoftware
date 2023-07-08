@@ -111,9 +111,9 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <?php echo $mensaje; ?>
         </div>
     <?php } ?>
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
+    <div class="row justify-content-around">
+        <div class="col-xl"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Agregar texto</h4>
@@ -133,7 +133,7 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                                 <input class="form-control" name="txtTipoTexto1" id="txtTipoTexto1" placeholder="Ingrese el tipo de texto"></input> -->
                                 <select for="txtTipoTexto1" class="form-control" id="txtTipoTexto1" name="txtTipoTexto1" aria-label="Seleccione el tipo de texto">
                                         <option selected>Seleccione el tipo de texto</option>
-                                        <option value="1">Texto</option>
+                                        <option value="1">Título</option>
                                         <option value="2">Párrafo</option>
                                         <option value="3">Frase</option>
                                 </select>
@@ -148,7 +148,7 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Editar texto</h4>
@@ -177,7 +177,7 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                                 <input class="form-control" name="txtTipoTexto" id="txtTipoTexto" value="<?php echo $txtTipoTexto?>" placeholder="Ingrese el tipo de texto"></input> -->
                                 <select for="txtTipoTexto" class="form-control" id="txtTipoTexto" name="txtTipoTexto" aria-label="Seleccione el tipo de texto">
                                         <option selected>Seleccione el tipo de texto</option>
-                                        <option value="1">Texto</option>
+                                        <option value="1">Título</option>
                                         <option value="2">Párrafo</option>
                                         <option value="3">Frase</option>
                                 </select>
@@ -192,55 +192,57 @@ $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-xl"></div>
     </div>
-    <div class="card row m-5 shadow">
-        <div class="row">
-            <h4 class="p-2">Listado de textos en página de inicio</h4>
-        </div>
-        <div class="row">
-            <div class="col-1 border">Posición</div>
-            <div class="col-1 border">ID</div>
-            <div class="col-2 border">Texto</div>
-            <div class="col-2 border">Tipo texto</div>
-            <div class="col-1 border">Mostrar</div>
-            <div class="col border">Editar elemento</div>
-        </div>
-        <?php foreach($listaTexto as $lista) {?>
-            <div class="row">
-                <div class="col-1 border"><?php echo $lista['POSICION'] ?></div>
-                <div class="col-1 border"><?php echo $lista['ID_INICIO'] ?></div>
-                <div class="col-2 border"><?php echo $lista['TEXTO'] ?></div>
-                <div class="col-2 border">
-                    <?php if($lista['TIPO_TEXTO']==1){ ?> <p class="rounded-pill text-white bg-primary text-center"><?php echo "Título";  ?></p> <?php } ?>
-                    <?php if($lista['TIPO_TEXTO']==2){ ?> <p class="rounded-pill bg-warning text-center"><?php echo "Párrafo"; ?></p> <?php } ?>
-                    <?php if($lista['TIPO_TEXTO']==3){ ?> <p class="rounded-pill bg-info text-center"><?php echo "Frase";   ?></p> <?php } ?>
-                </div>
-                <div class="col-1 border">
-                    <?php if($lista['MOSTRAR']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
-                    <?php if($lista['MOSTRAR']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
-                </div>
-                <div class="col border">
-                    <form method="POST">
-                        <div class="row border">
-                            
-                            <div class="col-3"></div>
-                            <div class="col">
-                                <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_INICIO'] ?>"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR']==0){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
-                            </div>
-                            <div class="col-3"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-                    
-        <?php } ?>
+    <div class="card row m-5 shadow overflow-scroll">
+        <table class="table table-bordered">
+                <thead>
+                    <h4 class="p-2">Listado de textos en página de inicio</h4>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Posición</td>
+                        <td>ID</td>
+                        <td>Texto</td>
+                        <td>Tipo texto</td>
+                        <td>Mostrar</td>
+                        <td>Editar elemento</td>
+                    </tr>
+                    <?php foreach($listaTexto as $lista) {?>
+                    <tr>
+                        <td><?php echo $lista['POSICION'] ?></td>
+                        <td><?php echo $lista['ID_INICIO'] ?></td>
+                        <td><?php echo $lista['TEXTO'] ?></td>
+                        <td>
+                            <?php if($lista['TIPO_TEXTO']==1){ ?> <p class="rounded-pill text-white bg-primary text-center"><?php echo "Título";  ?></p> <?php } ?>
+                            <?php if($lista['TIPO_TEXTO']==2){ ?> <p class="rounded-pill bg-warning text-center"><?php echo "Párrafo"; ?></p> <?php } ?>
+                            <?php if($lista['TIPO_TEXTO']==3){ ?> <p class="rounded-pill bg-info text-center"><?php echo "Frase";   ?></p> <?php } ?>
+                        </td>
+                        <td>
+                            <?php if($lista['MOSTRAR']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                            <?php if($lista['MOSTRAR']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                        </td>
+                        <td>
+                            <form method="POST">
+                                <div class="row border">
+                                    <div class="col-3"></div>
+                                    <div class="col">
+                                        <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_INICIO'] ?>"></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR']==1){echo "disabled";}?>></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR']==0){echo "disabled";}?>></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION']==1){echo "disabled";}?>></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
+                                        <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+                                    </div>
+                                    <div class="col-3"></div>
+                                </div>
+                            </form>
+                        </td>
+                        </tr>
+                    <?php }?>
+                </tbody>
+            </table>
     </div>
 
 

@@ -57,7 +57,7 @@ $query = $_SERVER['QUERY_STRING'];
 
 <body>
     <div class="row m-2">
-        <div class="col-2">
+        <div class="col-lg-2 col-12">
             <div class="card m-1 p-3 text-bg-dark">
                 <span class="fs-4 text-center">Sistema</span>
                 </a>
@@ -106,5 +106,5 @@ $query = $_SERVER['QUERY_STRING'];
             </div>
         </div>
         <script src="../../src/sidebars.js"></script>
-        <div class="col">
+        <div class="col-md col-12">
             <div class="card m-1 p-3">

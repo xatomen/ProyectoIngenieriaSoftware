@@ -113,10 +113,10 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <?php echo $mensaje; ?>
         </div>
     <?php } ?>
-    <div class="row">
+    <div class="row justify-content-around">
         
-        <div class="col"></div>
-        <div class="col">
+        <div class="col-xl"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Agregar pregunta</h4>
@@ -145,7 +145,7 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Editar pregunta</h4>
@@ -183,53 +183,56 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-xl"></div>
 
     </div>
 
-    <div class="card row m-5 shadow">
-        <div class="row">
-            <h4 class="p-2">Listado de preguntas frecuentes</h4>
-        </div>
-        <div class="row">
-            <div class="col-1 border">Posición</div>
-            <div class="col-1 border">ID</div>
-            <div class="col-2 border">Título</div>
-            <div class="col-2 border">Descripción</div>
-            <div class="col-1 border">Mostrar</div>
-            <div class="col border">Editar elemento</div>
-        </div>
-        <?php foreach($listaPreguntas as $lista) {?>
-            <div class="row">
-                <div class="col-1 border"><?php echo $lista['POSICION_PREGUNTA'] ?></div>
-                <div class="col-1 border"><?php echo $lista['ID_PREGUNTA'] ?></div>
-                <div class="col-2 border"><?php echo $lista['TITULO_PREGUNTA'] ?></div>
-                <div class="col-2 border"><?php echo $lista['DESCRIPCION_PREGUNTA'] ?></div>
-                <div class="col-1 border">
-                    <?php if($lista['MOSTRAR_PREGUNTA']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
-                    <?php if($lista['MOSTRAR_PREGUNTA']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
-                </div>
-                <div class="col border">
-                    <form method="POST">
-                        <div class="row border">
-                            
-                            <div class="col-3"></div>
-                            <div class="col">
-                                <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PREGUNTA'] ?>"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_PREGUNTA']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_PREGUNTA']==0){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_PREGUNTA']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+    <div class="card row m-5 shadow overflow-scroll">
+
+        <table class="table table-bordered">
+            <thead>
+                <h4 class="p-2">Listado de preguntas frecuentes</h4>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Posición</td>
+                    <td>ID</td>
+                    <td>Título</td>
+                    <td>Descripción</td>
+                    <td>Mostrar</td>
+                    <td>Editar elemento</td>
+                </tr>
+                <?php foreach($listaPreguntas as $lista) {?>
+                <tr>
+                    <td><?php echo $lista['POSICION_PREGUNTA'] ?></td>
+                    <td><?php echo $lista['ID_PREGUNTA'] ?></td>
+                    <td><?php echo $lista['TITULO_PREGUNTA'] ?></td>
+                    <td><?php echo $lista['DESCRIPCION_PREGUNTA'] ?></td>
+                    <td>
+                        <?php if($lista['MOSTRAR_PREGUNTA']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                        <?php if($lista['MOSTRAR_PREGUNTA']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                    </td>
+                    <td>
+                        <form method="POST">
+                            <div class="row border">
+                                <div class="col-3"></div>
+                                <div class="col">
+                                    <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_PREGUNTA'] ?>"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_PREGUNTA']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_PREGUNTA']==0){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_PREGUNTA']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+                                </div>
+                                <div class="col-3"></div>
                             </div>
-                            <div class="col-3"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-                    
-        <?php } ?>
+                        </form>
+                    </td>
+                    </tr>
+                <?php }?>
+            </tbody>
+        </table>
     </div>
 
 <?php include("./template/footer.php") ?>

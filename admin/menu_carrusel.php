@@ -112,10 +112,10 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <?php echo $mensaje; ?>
         </div>
     <?php } ?>
-    <div class="row">
+    <div class="row justify-content-around">
         
-        <div class="col"></div>
-        <div class="col">
+        <div class="col-xl"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Agregar imágen al carrusel</h4>
@@ -144,7 +144,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="col">
                 <div class="card p-3 shadow">
                     <h4 class="text-center">Editar elemento seleccionado</h4>
@@ -182,55 +182,58 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-xl"></div>
 
     </div>
 
-    <div class="card row m-5 shadow">
-        <div class="row">
-            <h4 class="p-2">Listado de imágenes</h4>
-        </div>
-        <div class="row">
-            <div class="col-1 border">Posición</div>
-            <div class="col-1 border">ID</div>
-            <div class="col-2 border">Link imágen</div>
-            <div class="col-2 border">Descripción</div>
-            <div class="col border">Previsualización</div>
-            <div class="col-1 border">Mostrar</div>
-            <div class="col border">Editar elemento</div>
-        </div>
-        <?php foreach($listaImagenes as $lista) {?>
-            <div class="row">
-                <div class="col-1 border"><?php echo $lista['POSICION_IMG'] ?></div>
-                <div class="col-1 border"><?php echo $lista['ID_IMG_CARRUSEL'] ?></div>
-                <div class="col-2 border"><?php echo $lista['IMAGEN_CARRUSEL'] ?></div>
-                <div class="col-2 border"><?php echo $lista['DESCRIPCION_IMG_CARRUSEL'] ?></div>
-                <div class="col border"><img src="<?php echo $lista['IMAGEN_CARRUSEL'] ?>" style="max-width:250px;"></div>
-                <div class="col-1 border">
-                    <?php if($lista['MOSTRAR_IMG_CARRUSEL']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
-                    <?php if($lista['MOSTRAR_IMG_CARRUSEL']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
-                </div>
-                <div class="col border">
-                    <form method="POST">
-                        <div class="row border">
-                            
-                            <div class="col-3"></div>
-                            <div class="col">
-                                <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_IMG_CARRUSEL'] ?>"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_IMG_CARRUSEL']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_IMG_CARRUSEL']==0){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_IMG']==1){echo "disabled";}?>></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
-                                <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+    <div class="card row m-5 shadow overflow-scroll">
+
+        <table class="table table-bordered">
+            <thead>
+                <h4 class="p-2">Listado de imágenes</h4>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Posición</td>
+                    <td>ID</td>
+                    <td>Link imágen</td>
+                    <td>Descripción</td>
+                    <td>Previsualización</td>
+                    <td>Mostrar</td>
+                    <td>Editar elemento</td>
+                </tr>
+                <?php foreach($listaImagenes as $lista) {?>
+                <tr>
+                    <td><?php echo $lista['POSICION_IMG'] ?></td>
+                    <td><?php echo $lista['ID_IMG_CARRUSEL'] ?></td>
+                    <td><?php echo $lista['IMAGEN_CARRUSEL'] ?></td>
+                    <td><?php echo $lista['DESCRIPCION_IMG_CARRUSEL'] ?></td>
+                    <td><img src="<?php echo $lista['IMAGEN_CARRUSEL'] ?>" style="max-width:250px;"></td>
+                    <td>
+                        <?php if($lista['MOSTRAR_IMG_CARRUSEL']==0){ ?> <p class="bg-danger text-white text-center rounded-pill"> <?php echo "No"; ?></p> <?php }?>
+                        <?php if($lista['MOSTRAR_IMG_CARRUSEL']==1){ ?> <p class="bg-success text-white text-center rounded-pill"> <?php echo "Si"; ?></p> <?php }?>
+                    </td>
+                    <td>
+                        <form method="POST">
+                            <div class="row border">
+                                <div class="col-3"></div>
+                                <div class="col">
+                                    <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista['ID_IMG_CARRUSEL'] ?>"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Activar" class="btn btn-success" <?php if($lista['MOSTRAR_IMG_CARRUSEL']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Desactivar" class="btn btn-success" <?php if($lista['MOSTRAR_IMG_CARRUSEL']==0){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Subir" class="btn btn-primary" <?php if($lista['POSICION_IMG']==1){echo "disabled";}?>></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Bajar" class="btn btn-primary"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Seleccionar" class="btn btn-info"></input></div>
+                                    <div class="row m-1"><input type="submit" name="accion" value="Eliminar" class="btn btn-danger"></input></div>
+                                </div>
+                                <div class="col-3"></div>
                             </div>
-                            <div class="col-3"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-                    
-        <?php } ?>
+                        </form>
+                    </td>
+                    </tr>
+                <?php }?>
+            </tbody>
+        </table>
     </div>
 
 <?php include("./template/footer.php") ?>

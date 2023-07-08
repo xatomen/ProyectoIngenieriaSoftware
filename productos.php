@@ -20,13 +20,13 @@ $contador = 1;
 ?>
 
 <div class="container">
-    <div class="card p-5 m-5 shadow">
+    <div class="card p-sm-5 p-3 m-5 shadow">
         <h1 class="title font-pacifico">Productos</h1>
         <hr>
         <p1 class="font-familjen-grotesk fs-4 text-justify">A continuación podrás ver diseños inspiradores llevados a cabo por nosotros para nuestro clientes.</p1>
     
         <div class="container">
-            <!-- <div class="row"> -->
+            <div class="row justify-content-around">
                 <?php foreach($listaProductos as $lista){ if($contador==4){$contador = 1;}if($lista['MOSTRAR_PRODUCTO']==1){ ?>
                     <?php
                         $id_prod = $lista['ID_PRODUCTO'];
@@ -35,13 +35,8 @@ $contador = 1;
                         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
                         $firstPos = $resultado['firstPos'];
                     ?>
-                    <?php if($contador==1){?>
-                
-                        <div class="row">
 
-                    <?php } ?>
-                    
-                    <div class="card col m-3 p-2 shadow">
+                    <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3 m-xl-1 p-2 shadow">
                         <img src="<?php foreach($listaImagenes as $listaimg){ if($listaimg['ID_PRODUCTO']==$lista['ID_PRODUCTO'] && $listaimg['POSICION_IMG']==$firstPos){ echo $listaimg['IMAGEN'];} } ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $lista['TITULO_PRODUCTO'] ?></h5>
@@ -55,22 +50,8 @@ $contador = 1;
                         </div>
                     </div> 
 
-                    <?php if($contador==3){?>
-                
-                        </div>
-
-                    <?php } ?>
-
-                <?php }$contador = $contador + 1; } ?>
-                
-                <?php if($contador==2){ ?>
-                    <div class="col m-3"></div>
-                    <div class="col m-3"></div>
-                <?php } ?>  
-                <?php if($contador==3){ ?>
-                    <div class="col m-3"></div>
-                <?php } ?>  
-            <!-- </div> -->
+                <?php } } ?>  
+            </div>
             
         </div>
 

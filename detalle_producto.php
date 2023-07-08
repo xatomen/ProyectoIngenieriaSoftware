@@ -50,7 +50,7 @@ $firstPos = $resultado['firstPos'];
 ?>
 
 <div class="container">
-    <div class="card p-5 m-5 shadow">
+    <div class="card p-3 p-md-5 p-lg-5 p-xl-5 m-5 shadow">
         
         <!-- AÑADIR CARRUSEL DE IMÁGENES!!!!!!!!!!!!!!!! -->
         <div class="container">

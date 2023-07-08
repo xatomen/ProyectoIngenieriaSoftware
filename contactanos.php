@@ -1,7 +1,7 @@
 <?php include('template/header.php'); ?>
 
 <div class="container">
-    <div class="card p-5 m-5 shadow">
+    <div class="card p-sm-5 p-3 m-5 shadow">
         <h1 class="title font-pacifico">Contáctanos</h1>
         <hr>
         <p1 class="font-familjen-grotesk fs-4 text-justify">A continuación tienes a disposición un formulario de contacto para enviarnos tus consultas, sugerencias, reclamos, cotizaciones, etc.</p1>
@@ -9,18 +9,18 @@
         <div class="row">
             <h2 class="text-center">Formulario de contacto</h2>
 
-            <div class="col-2"></div>
+            <div class="col-xl-2"></div>
 
-            <div class="col">
+            <div class="col-sm-12">
                 <div class="card p-3 shadow">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-sm col-12">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm col-12">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Apellido</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Apellido">
@@ -29,13 +29,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-sm col-12">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Correo</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm col-12">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Número telefónico</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="+569XXXXXXXX">
@@ -66,7 +66,7 @@
                 });
             </script>
 
-            <div class="col-2"></div>
+            <div class="col-xl-2"></div>
 
         </div>
 

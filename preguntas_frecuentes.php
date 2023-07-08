@@ -16,7 +16,7 @@ $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="container">
-    <div class="card p-5 m-5 shadow">
+    <div class="card p-sm-5 p-3 m-5 shadow">
         <h1 class="title font-pacifico">Preguntas frecuentes</h1>
         <hr>
         <p1 class="font-familjen-grotesk fs-4 text-justify">A continuación podrás encontrar las preguntas frecuentes realizadas por nuestros clientes, para que no quedes con ninguna duda.</p1>

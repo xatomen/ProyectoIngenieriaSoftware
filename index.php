@@ -49,10 +49,10 @@ $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
  </div>
 
 <div class="container">
-    <div class="card p-5 m-5 shadow">
+    <div class="card p-sm-5 p-3 m-5 shadow">
         <!-- <h1 class="title">Inicio</h1>
         <hr> -->
-        <?php foreach($listaInicio as $inicio){ ?>
+        <?php foreach($listaInicio as $inicio){ if($inicio['MOSTRAR']==1){?>
 
             <?php if($inicio['TIPO_TEXTO']==1){ ?>
                 <div class="row">
@@ -64,7 +64,7 @@ $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <?php if($inicio['TIPO_TEXTO']==2){ ?>
                 <div class="row">
                     <!-- <div class="col"></div> -->
-                    <div class="col mx-5"><p class="font-familjen-grotesk fs-4 text-justify"><?php echo $inicio['TEXTO'];?></p></div>
+                    <div class="col mx-xl-5"><p class="font-familjen-grotesk fs-4 text-justify"><?php echo $inicio['TEXTO'];?></p></div>
                 </div>
             <?php } ?>
 
@@ -75,7 +75,7 @@ $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <?php } ?>
 
-        <?php } ?>
+        <?php } } ?>
     </div>
 </div>
 
