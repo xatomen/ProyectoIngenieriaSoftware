@@ -111,17 +111,17 @@ switch ($accion){
     
         case "Subir":
             $mensaje = "Imágen subida de puesto satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)-1");
+            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)-1 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_PRODUCTO=$txtID2");
+            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
             break;
     
         case "Bajar":
             $mensaje = "Imágen bajada de puesto satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)+1");
+            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)+1 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_PRODUCTO=$txtID2");
+            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
             break;
         
@@ -284,6 +284,7 @@ $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                                         <ul class="dropdown-menu">
                                             <form method="POST">
                                                 <div class="row m-1"><input type="hidden" name="txtID2" id="txtID2" value="<?php echo $lista2['ID_IMG_PRODUCTO'] ?>"></input></div>
+                                                <div class="row m-1"><input type="hidden" name="txtID" id="txtID" value="<?php echo $lista2['ID_PRODUCTO'] ?>"></input></div>
                                                 <div class="row m-1"><input type="submit" name="accion_imagen" value="Activar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==1){echo "disabled";}?>></input></div>
                                                 <div class="row m-1"><input type="submit" name="accion_imagen" value="Desactivar" class="btn btn-success" <?php if($lista2['MOSTRAR_IMAGEN']==0){echo "disabled";}?>></input></div>
                                                 <div class="row m-1"><input type="submit" name="accion_imagen" value="Subir" class="btn btn-primary" <?php if($lista2['POSICION_IMG']==1){echo "disabled";}?>></input></div>
