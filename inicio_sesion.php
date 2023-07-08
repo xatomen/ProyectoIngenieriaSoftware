@@ -4,7 +4,7 @@
 
     include("./admin/config/bd.php");
 
-    $sentenciaSQL= $conexion->prepare("SELECT * FROM credenciales");
+    $sentenciaSQL= $conexion->prepare("SELECT * FROM credenciales, administrador WHERE credenciales.ID_USUARIO = administrador.ID_USUARIO");
     $sentenciaSQL->execute();
     $listaCredenciales=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
@@ -15,9 +15,9 @@ foreach ($listaCredenciales as $credencial){
 
     if($_POST){
         if($_POST){
-            if(($_POST['usuario']==$credencial['usuario']) && ($_POST['password']==$credencial['contrasenia'])){ //Verificamos inicio de sesión
+            if(($_POST['usuario']==$credencial['USUARIO']) && ($_POST['password']==$credencial['PASSWORD'])){ //Verificamos inicio de sesión
                 $_SESSION['usuario'] = "ok";
-                $_SESSION['nombreUsuario'] = "Administrador";
+                $_SESSION['nombreUsuario'] = $credencial['USUARIO'];
                 header('Location: ./admin/inicio_admin.php');
             }
             else{
