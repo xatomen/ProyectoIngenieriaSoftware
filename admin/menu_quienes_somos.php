@@ -16,34 +16,34 @@ switch ($accion){
 
     case "Activar":
         $mensaje = "Texto activado satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET MOSTRAR=1 WHERE ID_QUIENES=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET MOSTRAR=1 WHERE ID_QUIENES=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
         $mensaje = "Texto desactivado satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET MOSTRAR=0 WHERE ID_QUIENES=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET MOSTRAR=0 WHERE ID_QUIENES=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
         $mensaje = "Texto subido de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET POSICION=POSICION+1 WHERE POSICION=(SELECT POSICION FROM QUIENES_SOMOS WHERE ID_QUIENES=$txtID)-1");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET POSICION=POSICION+1 WHERE POSICION=(SELECT POSICION FROM quienes_somos WHERE ID_QUIENES=$txtID)-1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET POSICION=POSICION-1 WHERE ID_QUIENES=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET POSICION=POSICION-1 WHERE ID_QUIENES=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Bajar":
         $mensaje = "Texto bajado de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET POSICION=POSICION-1 WHERE POSICION=(SELECT POSICION FROM QUIENES_SOMOS WHERE ID_QUIENES=$txtID)+1");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET POSICION=POSICION-1 WHERE POSICION=(SELECT POSICION FROM quienes_somos WHERE ID_QUIENES=$txtID)+1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE QUIENES_SOMOS SET POSICION=POSICION+1 WHERE ID_QUIENES=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE quienes_somos SET POSICION=POSICION+1 WHERE ID_QUIENES=$txtID");
         $sentenciaSQL->execute();
         break;
     
     case "Seleccionar":
-        $sentenciaSQL=$conexion->prepare("SELECT * FROM QUIENES_SOMOS WHERE ID_QUIENES=:ID_QUIENES");
+        $sentenciaSQL=$conexion->prepare("SELECT * FROM quienes_somos WHERE ID_QUIENES=:ID_QUIENES");
         $sentenciaSQL->bindParam(':ID_QUIENES',$txtID);
         $sentenciaSQL->execute();
         $ListaSel=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
@@ -55,7 +55,7 @@ switch ($accion){
 
     case "Editar":
         $mensaje = "Texto editado satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("UPDATE QUIENES_SOMOS SET TIPO_TEXTO=:TIPO_TEXTO, TEXTO=:TEXTO WHERE ID_QUIENES=:ID_QUIENES");
+        $sentenciaSQL = $conexion->prepare("UPDATE quienes_somos SET TIPO_TEXTO=:TIPO_TEXTO, TEXTO=:TEXTO WHERE ID_QUIENES=:ID_QUIENES");
         $sentenciaSQL->bindParam(':TIPO_TEXTO', $txtTipoTexto);
         $sentenciaSQL->bindParam(':TEXTO', $txtTexto);
         $sentenciaSQL->bindParam(':ID_QUIENES', $txtID);
@@ -68,14 +68,14 @@ switch ($accion){
     case "Agregar":
         $mensaje = "Texto agregado satisfactoriamente";
         //Obtenemos el último índice y la última posición
-        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_QUIENES) AS lastIndex, MAX(POSICION) AS lastPos FROM QUIENES_SOMOS");
+        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_QUIENES) AS lastIndex, MAX(POSICION) AS lastPos FROM quienes_somos");
         $sentenciaSQL->execute();
         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
         $lastindex = $resultado['lastIndex']+1;
         $lastpos = $resultado['lastPos']+1;
 
 
-        $sentenciaSQL = $conexion->prepare("INSERT INTO QUIENES_SOMOS (ID_QUIENES, TIPO_TEXTO, TEXTO, MOSTRAR, POSICION) VALUES (:ID_QUIENES, :TIPO_TEXTO, :TEXTO, 1, :POSICION)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO quienes_somos (ID_QUIENES, TIPO_TEXTO, TEXTO, MOSTRAR, POSICION) VALUES (:ID_QUIENES, :TIPO_TEXTO, :TEXTO, 1, :POSICION)");
         $sentenciaSQL->bindParam(':ID_QUIENES', $lastindex);
         $sentenciaSQL->bindParam(':TIPO_TEXTO', $txtTipoTexto1);
         $sentenciaSQL->bindParam(':TEXTO', $txtTexto1);
@@ -86,14 +86,14 @@ switch ($accion){
 
     case "Eliminar":
         $mensaje = "Texto eliminado satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("DELETE FROM QUIENES_SOMOS WHERE ID_QUIENES=:ID_QUIENES");
+        $sentenciaSQL = $conexion->prepare("DELETE FROM quienes_somos WHERE ID_QUIENES=:ID_QUIENES");
         $sentenciaSQL->bindParam(":ID_QUIENES",$txtID);
         $sentenciaSQL->execute();
         break;
 
 }
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM QUIENES_SOMOS ORDER BY POSICION");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM quienes_somos ORDER BY POSICION");
 $sentenciaSQL->execute();
 $listaTexto=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

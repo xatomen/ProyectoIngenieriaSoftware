@@ -4,7 +4,7 @@
 
 include("./admin/config/bd.php");
 
-$sentenciaSQL = $conexion->prepare("SELECT * FROM QUIENES_SOMOS ORDER BY POSICION");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM quienes_somos ORDER BY POSICION");
 $sentenciaSQL->execute();
 $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>

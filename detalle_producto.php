@@ -23,14 +23,14 @@ else{
     // echo $token_tmp;
     if($token == $token_tmp){
 
-        $sentenciaSQL= $conexion->prepare("SELECT COUNT(ID_PRODUCTO) FROM PRODUCTO WHERE ID_PRODUCTO=$id");
+        $sentenciaSQL= $conexion->prepare("SELECT COUNT(ID_PRODUCTO) FROM producto WHERE ID_PRODUCTO=$id");
         $sentenciaSQL->execute();
         if($sentenciaSQL->fetchColumn()>0){
-            $sentenciaSQL= $conexion->prepare("SELECT * FROM PRODUCTO WHERE ID_PRODUCTO=?");
+            $sentenciaSQL= $conexion->prepare("SELECT * FROM producto WHERE ID_PRODUCTO=?");
             $sentenciaSQL->execute([$id]);
             $listaProductos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             
-            $sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_PRODUCTO ORDER BY POSICION_IMG");
+            $sentenciaSQL= $conexion->prepare("SELECT * FROM imagen_producto ORDER BY POSICION_IMG");
             $sentenciaSQL->execute();
             $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         }

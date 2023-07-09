@@ -4,12 +4,12 @@
 
 include("./admin/config/bd.php");
 
-$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_PREGUNTA) AS firstPos FROM PREGUNTAS_FRECUENTES WHERE MOSTRAR_PREGUNTA=1");
+$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_PREGUNTA) AS firstPos FROM preguntas_frecuentes WHERE MOSTRAR_PREGUNTA=1");
 $sentenciaSQL->execute();
 $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
 $firstPos = $resultado['firstPos'];
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM PREGUNTAS_FRECUENTES ORDER BY POSICION_PREGUNTA");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM preguntas_frecuentes ORDER BY POSICION_PREGUNTA");
 $sentenciaSQL->execute();
 $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

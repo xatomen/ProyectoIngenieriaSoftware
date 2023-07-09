@@ -4,16 +4,16 @@
 
 include("./admin/config/bd.php");
 
-$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM IMAGEN_CARRUSEL WHERE MOSTRAR_IMG_CARRUSEL=1");
+$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM imagen_carrusel WHERE MOSTRAR_IMG_CARRUSEL=1");
 $sentenciaSQL->execute();
 $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
 $firstPos = $resultado['firstPos'];
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_CARRUSEL ORDER BY POSICION_IMG");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM imagen_carrusel ORDER BY POSICION_IMG");
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-$sentenciaSQL = $conexion->prepare("SELECT * FROM INICIO ORDER BY POSICION");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM inicio ORDER BY POSICION");
 $sentenciaSQL->execute();
 $listaInicio = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>

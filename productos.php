@@ -6,11 +6,11 @@ require 'config/config.php';
 
 include("./admin/config/bd.php");
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM PRODUCTO ORDER BY POSICION_PRODUCTO");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM producto ORDER BY POSICION_PRODUCTO");
 $sentenciaSQL->execute();
 $listaProductos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_PRODUCTO ORDER BY POSICION_IMG");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM imagen_producto ORDER BY POSICION_IMG");
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

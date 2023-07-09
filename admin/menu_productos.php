@@ -19,34 +19,34 @@ switch ($accion){
 
     case "Activar":
         $mensaje = "Producto activado satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET MOSTRAR_PRODUCTO=1 WHERE ID_PRODUCTO=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET MOSTRAR_PRODUCTO=1 WHERE ID_PRODUCTO=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
         $mensaje = "Producto desactivado satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET MOSTRAR_PRODUCTO=0 WHERE ID_PRODUCTO=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET MOSTRAR_PRODUCTO=0 WHERE ID_PRODUCTO=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
         $mensaje = "Producto subido de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET POSICION_PRODUCTO=POSICION_PRODUCTO+1 WHERE POSICION_PRODUCTO=(SELECT POSICION_PRODUCTO FROM PRODUCTO WHERE ID_PRODUCTO=$txtID)-1");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET POSICION_PRODUCTO=POSICION_PRODUCTO+1 WHERE POSICION_PRODUCTO=(SELECT POSICION_PRODUCTO FROM producto WHERE ID_PRODUCTO=$txtID)-1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET POSICION_PRODUCTO=POSICION_PRODUCTO-1 WHERE ID_PRODUCTO=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET POSICION_PRODUCTO=POSICION_PRODUCTO-1 WHERE ID_PRODUCTO=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Bajar":
         $mensaje = "Producto bajado de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET POSICION_PRODUCTO=POSICION_PRODUCTO-1 WHERE POSICION_PRODUCTO=(SELECT POSICION_PRODUCTO FROM PRODUCTO WHERE ID_PRODUCTO=$txtID)+1");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET POSICION_PRODUCTO=POSICION_PRODUCTO-1 WHERE POSICION_PRODUCTO=(SELECT POSICION_PRODUCTO FROM producto WHERE ID_PRODUCTO=$txtID)+1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE PRODUCTO SET POSICION_PRODUCTO=POSICION_PRODUCTO+1 WHERE ID_PRODUCTO=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE producto SET POSICION_PRODUCTO=POSICION_PRODUCTO+1 WHERE ID_PRODUCTO=$txtID");
         $sentenciaSQL->execute();
         break;
     
     case "Seleccionar":
-        $sentenciaSQL=$conexion->prepare("SELECT * FROM PRODUCTO WHERE ID_PRODUCTO=:ID_PRODUCTO");
+        $sentenciaSQL=$conexion->prepare("SELECT * FROM producto WHERE ID_PRODUCTO=:ID_PRODUCTO");
         $sentenciaSQL->bindParam(':ID_PRODUCTO',$txtID);
         $sentenciaSQL->execute();
         $ListaSel=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
@@ -58,7 +58,7 @@ switch ($accion){
 
     case "Editar":
         $mensaje = "Producto editado satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("UPDATE PRODUCTO SET DESCRIPCION_PRODUCTO=:DESCRIPCION_PRODUCTO, TITULO_PRODUCTO=:TITULO_PRODUCTO WHERE ID_PRODUCTO=:ID_PRODUCTO");
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET DESCRIPCION_PRODUCTO=:DESCRIPCION_PRODUCTO, TITULO_PRODUCTO=:TITULO_PRODUCTO WHERE ID_PRODUCTO=:ID_PRODUCTO");
         $sentenciaSQL->bindParam(':DESCRIPCION_PRODUCTO', $txtDescripcion);
         $sentenciaSQL->bindParam(':TITULO_PRODUCTO', $txtTitulo);
         $sentenciaSQL->bindParam(':ID_PRODUCTO', $txtID);
@@ -71,14 +71,14 @@ switch ($accion){
     case "Agregar":
         $mensaje = "Producto agregado satisfactoriamente";
         //Obtenemos el último índice y la última posición
-        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_PRODUCTO) AS lastIndex, MAX(POSICION_PRODUCTO) AS lastPos FROM PRODUCTO");
+        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_PRODUCTO) AS lastIndex, MAX(POSICION_PRODUCTO) AS lastPos FROM producto");
         $sentenciaSQL->execute();
         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
         $lastindex = $resultado['lastIndex']+1;
         $lastpos = $resultado['lastPos']+1;
 
 
-        $sentenciaSQL = $conexion->prepare("INSERT INTO PRODUCTO (ID_PRODUCTO, DESCRIPCION_PRODUCTO, TITULO_PRODUCTO, MOSTRAR_PRODUCTO, POSICION_PRODUCTO) VALUES (:ID_PRODUCTO, :DESCRIPCION_PRODUCTO, :TITULO_PRODUCTO, 1, :POSICION_PRODUCTO)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO producto (ID_PRODUCTO, DESCRIPCION_PRODUCTO, TITULO_PRODUCTO, MOSTRAR_PRODUCTO, POSICION_PRODUCTO) VALUES (:ID_PRODUCTO, :DESCRIPCION_PRODUCTO, :TITULO_PRODUCTO, 1, :POSICION_PRODUCTO)");
         $sentenciaSQL->bindParam(':ID_PRODUCTO', $lastindex);
         $sentenciaSQL->bindParam(':DESCRIPCION_PRODUCTO', $txtDescripcion1);
         $sentenciaSQL->bindParam(':TITULO_PRODUCTO', $txtTitulo1);
@@ -89,7 +89,7 @@ switch ($accion){
 
     case "Eliminar":
         $mensaje = "Producto eliminado satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("DELETE FROM PRODUCTO WHERE ID_PRODUCTO=:ID_PRODUCTO");
+        $sentenciaSQL = $conexion->prepare("DELETE FROM producto WHERE ID_PRODUCTO=:ID_PRODUCTO");
         $sentenciaSQL->bindParam(":ID_PRODUCTO",$txtID);
         $sentenciaSQL->execute();
         break;
@@ -99,35 +99,35 @@ switch ($accion){
     switch ($accion_imagen){
         case "Activar":
             $mensaje = "Imágen activada satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET MOSTRAR_IMAGEN=1 WHERE ID_IMG_PRODUCTO=$txtID2");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET MOSTRAR_IMAGEN=1 WHERE ID_IMG_PRODUCTO=$txtID2");
             $sentenciaSQL->execute();
             break;
             
         case "Desactivar":
             $mensaje = "Imágen desactivada satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET MOSTRAR_IMAGEN=0 WHERE ID_IMG_PRODUCTO=$txtID2");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET MOSTRAR_IMAGEN=0 WHERE ID_IMG_PRODUCTO=$txtID2");
             $sentenciaSQL->execute();
             break;
     
         case "Subir":
             $mensaje = "Imágen subida de puesto satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)-1 AND ID_PRODUCTO=$txtID");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM imagen_producto WHERE ID_IMG_PRODUCTO=$txtID2)-1 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
             break;
     
         case "Bajar":
             $mensaje = "Imágen bajada de puesto satisfactoriamente";
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=$txtID2)+1 AND ID_PRODUCTO=$txtID");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM imagen_producto WHERE ID_IMG_PRODUCTO=$txtID2)+1 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
-            $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_PRODUCTO SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
+            $sentenciaSQL=$conexion->prepare("UPDATE imagen_producto SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_PRODUCTO=$txtID2 AND ID_PRODUCTO=$txtID");
             $sentenciaSQL->execute();
             break;
         
         case "Eliminar":
             $mensaje = "Imágen eliminada satisfactoriamente";
-            $sentenciaSQL = $conexion->prepare("DELETE FROM IMAGEN_PRODUCTO WHERE ID_IMG_PRODUCTO=:ID_IMG_PRODUCTO");
+            $sentenciaSQL = $conexion->prepare("DELETE FROM imagen_producto WHERE ID_IMG_PRODUCTO=:ID_IMG_PRODUCTO");
             $sentenciaSQL->bindParam(":ID_IMG_PRODUCTO",$txtID2);
             $sentenciaSQL->execute();
             break;
@@ -135,17 +135,17 @@ switch ($accion){
         case "Agregar":
             $mensaje = "Imágen agregada satisfactoriamente";
             //Obtenemos el último índice y la última posición
-            $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_PRODUCTO) AS lastIndex FROM IMAGEN_PRODUCTO");
+            $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_PRODUCTO) AS lastIndex FROM imagen_producto");
             $sentenciaSQL->execute();
             $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
             $lastindex = $resultado['lastIndex']+1;
-            $sentenciaSQL = $conexion->prepare("SELECT MAX(POSICION_IMG) AS lastPos FROM IMAGEN_PRODUCTO WHERE ID_PRODUCTO = $txtID");
+            $sentenciaSQL = $conexion->prepare("SELECT MAX(POSICION_IMG) AS lastPos FROM imagen_producto WHERE ID_PRODUCTO = $txtID");
             $sentenciaSQL->execute();
             $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
             $lastpos = $resultado['lastPos']+1;
 
 
-            $sentenciaSQL = $conexion->prepare("INSERT INTO IMAGEN_PRODUCTO (ID_IMG_PRODUCTO, ID_PRODUCTO, IMAGEN, MOSTRAR_IMAGEN, POSICION_IMG) VALUES (:ID_IMG_PRODUCTO, :ID_PRODUCTO, :IMAGEN, 1, :POSICION_IMG)");
+            $sentenciaSQL = $conexion->prepare("INSERT INTO imagen_producto (ID_IMG_PRODUCTO, ID_PRODUCTO, IMAGEN, MOSTRAR_IMAGEN, POSICION_IMG) VALUES (:ID_IMG_PRODUCTO, :ID_PRODUCTO, :IMAGEN, 1, :POSICION_IMG)");
             $sentenciaSQL->bindParam(':ID_IMG_PRODUCTO', $lastindex);
             $sentenciaSQL->bindParam(':ID_PRODUCTO', $txtID);
             $sentenciaSQL->bindParam(':IMAGEN', $txtLinkImagen);
@@ -154,11 +154,11 @@ switch ($accion){
             break;
     }
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM PRODUCTO ORDER BY POSICION_PRODUCTO");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM producto ORDER BY POSICION_PRODUCTO");
 $sentenciaSQL->execute();
 $listaProductos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_PRODUCTO ORDER BY POSICION_IMG");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM imagen_producto ORDER BY POSICION_IMG");
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

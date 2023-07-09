@@ -16,34 +16,34 @@ switch ($accion){
 
     case "Activar":
         $mensaje = "Imágen activada satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET MOSTRAR_IMG_CARRUSEL=1 WHERE ID_IMG_CARRUSEL=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET MOSTRAR_IMG_CARRUSEL=1 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
         $mensaje = "Imágen desactivada satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET MOSTRAR_IMG_CARRUSEL=0 WHERE ID_IMG_CARRUSEL=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET MOSTRAR_IMG_CARRUSEL=0 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
         $mensaje = "Imágen subida de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=$txtID)-1");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET POSICION_IMG=POSICION_IMG+1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM imagen_carrusel WHERE ID_IMG_CARRUSEL=$txtID)-1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_CARRUSEL=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET POSICION_IMG=POSICION_IMG-1 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Bajar":
         $mensaje = "Imágen bajada de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=$txtID)+1");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET POSICION_IMG=POSICION_IMG-1 WHERE POSICION_IMG=(SELECT POSICION_IMG FROM imagen_carrusel WHERE ID_IMG_CARRUSEL=$txtID)+1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE IMAGEN_CARRUSEL SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_CARRUSEL=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE imagen_carrusel SET POSICION_IMG=POSICION_IMG+1 WHERE ID_IMG_CARRUSEL=$txtID");
         $sentenciaSQL->execute();
         break;
     
     case "Seleccionar":
-        $sentenciaSQL=$conexion->prepare("SELECT * FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
+        $sentenciaSQL=$conexion->prepare("SELECT * FROM imagen_carrusel WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
         $sentenciaSQL->bindParam(':ID_IMG_CARRUSEL',$txtID);
         $sentenciaSQL->execute();
         $ListaSel=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
@@ -55,7 +55,7 @@ switch ($accion){
 
     case "Editar":
         $mensaje = "Imágen editada satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("UPDATE IMAGEN_CARRUSEL SET DESCRIPCION_IMG_CARRUSEL=:DESCRIPCION_IMG_CARRUSEL, IMAGEN_CARRUSEL=:IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
+        $sentenciaSQL = $conexion->prepare("UPDATE imagen_carrusel SET DESCRIPCION_IMG_CARRUSEL=:DESCRIPCION_IMG_CARRUSEL, IMAGEN_CARRUSEL=:IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
         $sentenciaSQL->bindParam(':DESCRIPCION_IMG_CARRUSEL', $txtDescripcion);
         $sentenciaSQL->bindParam(':IMAGEN_CARRUSEL', $txtLinkImagen);
         $sentenciaSQL->bindParam(':ID_IMG_CARRUSEL', $txtID);
@@ -68,14 +68,14 @@ switch ($accion){
     case "Agregar":
         $mensaje = "Imágen agregada satisfactoriamente";
         //Obtenemos el último índice y la última posición
-        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_CARRUSEL) AS lastIndex, MAX(POSICION_IMG) AS lastPos FROM IMAGEN_CARRUSEL");
+        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_IMG_CARRUSEL) AS lastIndex, MAX(POSICION_IMG) AS lastPos FROM imagen_carrusel");
         $sentenciaSQL->execute();
         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
         $lastindex = $resultado['lastIndex']+1;
         $lastpos = $resultado['lastPos']+1;
 
 
-        $sentenciaSQL = $conexion->prepare("INSERT INTO IMAGEN_CARRUSEL (ID_IMG_CARRUSEL, DESCRIPCION_IMG_CARRUSEL, IMAGEN_CARRUSEL, MOSTRAR_IMG_CARRUSEL, POSICION_IMG) VALUES (:ID_IMG_CARRUSEL, :DESCRIPCION_IMG_CARRUSEL, :IMAGEN_CARRUSEL, 1, :POSICION_IMG)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO imagen_carrusel (ID_IMG_CARRUSEL, DESCRIPCION_IMG_CARRUSEL, IMAGEN_CARRUSEL, MOSTRAR_IMG_CARRUSEL, POSICION_IMG) VALUES (:ID_IMG_CARRUSEL, :DESCRIPCION_IMG_CARRUSEL, :IMAGEN_CARRUSEL, 1, :POSICION_IMG)");
         $sentenciaSQL->bindParam(':ID_IMG_CARRUSEL', $lastindex);
         $sentenciaSQL->bindParam(':DESCRIPCION_IMG_CARRUSEL', $txtDescripcion1);
         $sentenciaSQL->bindParam(':IMAGEN_CARRUSEL', $txtLinkImagen1);
@@ -86,14 +86,14 @@ switch ($accion){
 
     case "Eliminar":
         $mensaje = "Imágen eliminada satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("DELETE FROM IMAGEN_CARRUSEL WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
+        $sentenciaSQL = $conexion->prepare("DELETE FROM imagen_carrusel WHERE ID_IMG_CARRUSEL=:ID_IMG_CARRUSEL");
         $sentenciaSQL->bindParam(":ID_IMG_CARRUSEL",$txtID);
         $sentenciaSQL->execute();
         break;
 
 }
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM IMAGEN_CARRUSEL ORDER BY POSICION_IMG");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM imagen_carrusel ORDER BY POSICION_IMG");
 $sentenciaSQL->execute();
 $listaImagenes=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

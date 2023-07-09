@@ -16,34 +16,34 @@ switch ($accion){
 
     case "Activar":
         $mensaje = "Pregunta activada satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET MOSTRAR_PREGUNTA=1 WHERE ID_PREGUNTA=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET MOSTRAR_PREGUNTA=1 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
         
     case "Desactivar":
         $mensaje = "Pregunta desactivada satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET MOSTRAR_PREGUNTA=0 WHERE ID_PREGUNTA=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET MOSTRAR_PREGUNTA=0 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Subir":
         $mensaje = "Pregunta subida de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=$txtID)-1");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM preguntas_frecuentes WHERE ID_PREGUNTA=$txtID)-1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE ID_PREGUNTA=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
 
     case "Bajar":
         $mensaje = "Pregunta bajada de puesto satisfactoriamente";
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=$txtID)+1");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET POSICION_PREGUNTA=POSICION_PREGUNTA-1 WHERE POSICION_PREGUNTA=(SELECT POSICION_PREGUNTA FROM preguntas_frecuentes WHERE ID_PREGUNTA=$txtID)+1");
         $sentenciaSQL->execute();
-        $sentenciaSQL=$conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE ID_PREGUNTA=$txtID");
+        $sentenciaSQL=$conexion->prepare("UPDATE preguntas_frecuentes SET POSICION_PREGUNTA=POSICION_PREGUNTA+1 WHERE ID_PREGUNTA=$txtID");
         $sentenciaSQL->execute();
         break;
     
     case "Seleccionar":
-        $sentenciaSQL=$conexion->prepare("SELECT * FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=:ID_PREGUNTA");
+        $sentenciaSQL=$conexion->prepare("SELECT * FROM preguntas_frecuentes WHERE ID_PREGUNTA=:ID_PREGUNTA");
         $sentenciaSQL->bindParam(':ID_PREGUNTA',$txtID);
         $sentenciaSQL->execute();
         $ListaSel=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
@@ -55,7 +55,7 @@ switch ($accion){
 
     case "Editar":
         $mensaje = "Pregunta editada satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("UPDATE PREGUNTAS_FRECUENTES SET DESCRIPCION_PREGUNTA=:DESCRIPCION_PREGUNTA, TITULO_PREGUNTA=:TITULO_PREGUNTA WHERE ID_PREGUNTA=:ID_PREGUNTA");
+        $sentenciaSQL = $conexion->prepare("UPDATE preguntas_frecuentes SET DESCRIPCION_PREGUNTA=:DESCRIPCION_PREGUNTA, TITULO_PREGUNTA=:TITULO_PREGUNTA WHERE ID_PREGUNTA=:ID_PREGUNTA");
         $sentenciaSQL->bindParam(':DESCRIPCION_PREGUNTA', $txtDescripcion);
         $sentenciaSQL->bindParam(':TITULO_PREGUNTA', $txtTitulo);
         $sentenciaSQL->bindParam(':ID_PREGUNTA', $txtID);
@@ -68,14 +68,14 @@ switch ($accion){
     case "Agregar":
         $mensaje = "Pregunta agregada satisfactoriamente";
         //Obtenemos el último índice y la última posición
-        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_PREGUNTA) AS lastIndex, MAX(POSICION_PREGUNTA) AS lastPos FROM PREGUNTAS_FRECUENTES");
+        $sentenciaSQL = $conexion->prepare("SELECT MAX(ID_PREGUNTA) AS lastIndex, MAX(POSICION_PREGUNTA) AS lastPos FROM preguntas_frecuentes");
         $sentenciaSQL->execute();
         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
         $lastindex = $resultado['lastIndex']+1;
         $lastpos = $resultado['lastPos']+1;
 
 
-        $sentenciaSQL = $conexion->prepare("INSERT INTO PREGUNTAS_FRECUENTES (ID_PREGUNTA, DESCRIPCION_PREGUNTA, TITULO_PREGUNTA, MOSTRAR_PREGUNTA, POSICION_PREGUNTA) VALUES (:ID_PREGUNTA, :DESCRIPCION_PREGUNTA, :TITULO_PREGUNTA, 1, :POSICION_PREGUNTA)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO preguntas_frecuentes (ID_PREGUNTA, DESCRIPCION_PREGUNTA, TITULO_PREGUNTA, MOSTRAR_PREGUNTA, POSICION_PREGUNTA) VALUES (:ID_PREGUNTA, :DESCRIPCION_PREGUNTA, :TITULO_PREGUNTA, 1, :POSICION_PREGUNTA)");
         $sentenciaSQL->bindParam(':ID_PREGUNTA', $lastindex);
         $sentenciaSQL->bindParam(':DESCRIPCION_PREGUNTA', $txtDescripcion1);
         $sentenciaSQL->bindParam(':TITULO_PREGUNTA', $txtTitulo1);
@@ -86,14 +86,14 @@ switch ($accion){
 
     case "Eliminar":
         $mensaje = "Pregunta eliminada satisfactoriamente";
-        $sentenciaSQL = $conexion->prepare("DELETE FROM PREGUNTAS_FRECUENTES WHERE ID_PREGUNTA=:ID_PREGUNTA");
+        $sentenciaSQL = $conexion->prepare("DELETE FROM preguntas_frecuentes WHERE ID_PREGUNTA=:ID_PREGUNTA");
         $sentenciaSQL->bindParam(":ID_PREGUNTA",$txtID);
         $sentenciaSQL->execute();
         break;
 
 }
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM PREGUNTAS_FRECUENTES ORDER BY POSICION_PREGUNTA");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM preguntas_frecuentes ORDER BY POSICION_PREGUNTA");
 $sentenciaSQL->execute();
 $listaPreguntas=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
