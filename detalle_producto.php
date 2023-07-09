@@ -42,7 +42,7 @@ else{
     }
 }
 
-$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM IMAGEN_PRODUCTO WHERE MOSTRAR_IMAGEN=1 AND ID_PRODUCTO = $id");
+$sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM imagen_producto WHERE MOSTRAR_IMAGEN=1 AND ID_PRODUCTO = $id");
 $sentenciaSQL->execute();
 $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
 $firstPos = $resultado['firstPos'];
