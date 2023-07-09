@@ -30,7 +30,7 @@ $contador = 1;
                 <?php foreach($listaProductos as $lista){ if($contador==4){$contador = 1;}if($lista['MOSTRAR_PRODUCTO']==1){ ?>
                     <?php
                         $id_prod = $lista['ID_PRODUCTO'];
-                        $sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM IMAGEN_PRODUCTO WHERE MOSTRAR_IMAGEN=1 AND ID_PRODUCTO = $id_prod");
+                        $sentenciaSQL = $conexion->prepare("SELECT MIN(POSICION_IMG) AS firstPos FROM imagen_producto WHERE MOSTRAR_IMAGEN=1 AND ID_PRODUCTO = $id_prod");
                         $sentenciaSQL->execute();
                         $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
                         $firstPos = $resultado['firstPos'];
