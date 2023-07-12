@@ -12,8 +12,8 @@
                     <h3 class="text-center">Contacto</h3>
                     <hr>
                     <ul>
-                        <li>Número telefónico:</li>
-                        <li>Dirección de correo:</li>
+                        <li>Número telefónico: +56 9 3082 6610</li>
+                        <li>Dirección de correo: contactanos@individualesbethel.infinityfreeapp.com</li>
                     </ul>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
