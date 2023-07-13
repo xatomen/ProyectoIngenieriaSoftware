@@ -87,28 +87,19 @@
 
             <script>
                 const mensaje = document.getElementById('mensaje');
+                console.log(mensaje);
                 const contador = document.getElementById('contador');
                 mensaje.addEventListener('input', function(e) {
                     const target = e.target;
                     const longitudMax = target.getAttribute('maxlength');
                     const longitudAct = target.value.length;
-                    contador.innerHTML = `(${longitudAct}/0)`;
+                    contador.innerHTML = `(${longitudAct}/${longitudMax})`;
                 });
             </script>
 
             <div class="col-xl-2"></div>
 
             <script>
-                //         window.onloadTurnstileCallback = function () {
-                //             alert("Listo");
-                //             turnstile.render('#example-container', {
-                //             sitekey: '0x4AAAAAAAHJNJgNxYGfN5G4',
-                //             callback: function(token) {
-                //                 alert("Listo");
-                //                 console.log(`Challenge Success ${token}`);
-                //             },
-                //         });
-                // };
 
                 function _turnstileCb() {
                     console.debug('_turnstileCb called');
